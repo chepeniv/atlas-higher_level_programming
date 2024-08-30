@@ -9,5 +9,3 @@ def max_integer(nums=[]):
         if i > M:
             M = i
     return M
-
-
