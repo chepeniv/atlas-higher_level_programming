@@ -4,14 +4,12 @@ def add_tuple(a=(), b=()):
     L = [0, 0]
 
     for i in range(0, len(a)):
-        if i < 2:
-            L[i] += a[i]
-        else:
+        L[i] += a[i]
+        if i >= 1:
             break
     for i in range(0, len(b)):
-        if i < 2:
-            L[i] += b[i]
-        else:
+        L[i] += b[i]
+        if i >= 1:
             break
 
     ab = (L[0], L[1])
