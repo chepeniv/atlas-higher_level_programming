@@ -1,7 +1,21 @@
 #!/usr/bin/python3
 def roman_to_int(roman):
-    ref = "IVXLCDM" # 1, 5, 10, 50, 100, 500, 1000
-    if roman is not str:
-        return 0
-    else:
-    return list(map(lambda i: i * n, L))
+    calc = 0
+    ref = {'Null': 0, 'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+
+    for i in range(len(roman)):
+        a = roman[i]
+
+        try: 
+            b = roman[i + 1]
+        except (IndexError):
+            b = 'Null'
+
+        m = ref.get(a)
+        n = ref.get(b)
+        if m >= n: 
+            calc += m
+        else:
+            calc -= m
+
+    return calc
