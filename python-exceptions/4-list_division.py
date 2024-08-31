@@ -14,9 +14,6 @@ def list_division(A, B, length):
         except (IndexError):
             print("out of range")
             c = 0
-            break
         finally:
             C.append(c)
-    while len(C) < length:
-        C.append(0)
     return C
