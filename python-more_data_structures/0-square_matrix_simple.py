@@ -6,4 +6,3 @@ def square_matrix_simple(M=[]):
         b = map(lambda n: n * n, a)
         N.append(list(b))
     return N
-
