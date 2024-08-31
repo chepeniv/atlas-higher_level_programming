@@ -3,7 +3,7 @@
 def best_score(D):
     top = 0
     winner = None
-    if D != None:
+    if D is not None:
         for k, v in D.items():
             if v > top:
                 top = v
