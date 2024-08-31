@@ -9,7 +9,9 @@ def safe_print_list_integers(L=[], x=0):
             total += 1
         except (TypeError, ValueError):
             continue
-        #except (IndexError):
-        #    break
+        """
+        except (IndexError):
+            break
+        """
     print("")
     return total
