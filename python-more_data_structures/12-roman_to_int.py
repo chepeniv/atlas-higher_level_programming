@@ -17,7 +17,6 @@ def roman_to_int(roman):
 
     for i in range(len(roman)):
         a = roman[i]
-
         try:
             b = roman[i + 1]
         except (IndexError):

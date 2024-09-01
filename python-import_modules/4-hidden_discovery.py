@@ -1,11 +1,15 @@
 #!/usr/bin/python3
+
 if __name__ == "__main__":
-    from sys import argv
+    import hidden_4
 
-length = len(argv) - 1
-total = 0
+names = dir(hidden_4)
+found = []
 
-if length > 0:
-    for i in range(1, length + 1):
-        total += int(argv[i])
-print("{}".format(total))
+for name in names:
+    if name[:2] != '__':
+        found.append(name)
+
+found.sort()
+for name in found:
+    print(name)
