@@ -40,9 +40,8 @@ class Square:
     def position(self, position):
         """modifies the size of the square
         """
-        h = position[0]
-        v = position[1]
-        if (type(h), type(v)) != (int, int):
+        if (len(position) == 2 and
+                (type(position[0]), type(position[1])) != (int, int)):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = position
