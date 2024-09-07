@@ -7,7 +7,7 @@ class Square:
     """defines square objects with only one parameter
     """
 
-    def __init__(self, size=0, position=(0,0)):
+    def __init__(self, size=0, position=(0, 0)):
         """constructs a square with side of length `size`
         """
         self.size = size
@@ -74,4 +74,3 @@ class Square:
         """ raises custom TypeError
         """
         raise TypeError("position must be a tuple of 2 positive integers")
-
