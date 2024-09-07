@@ -38,11 +38,15 @@ class Square:
 
     @position.setter
     def position(self, position):
-        """modifies the size of the square
+        """sets the horizontal and vertical offset of the square
         """
-        if (len(position) == 2 and
-                (type(position[0]), type(position[1])) != (int, int)):
-            raise TypeError("position must be a tuple of 2 positive integers")
+        if len(position) == 2:
+            h = position[0]
+            v = position[1]
+        else:
+            self.__pos_error()
+        if (type(h), type(v)) != (int, int)):
+            self.__pos_error()
         else:
             self.__position = position
 
@@ -66,3 +70,9 @@ class Square:
                 print()
         else:
             print()
+
+    def __pos_error(self):
+        """ raises custom TypeError
+        """
+        raise TypeError("position must be a tuple of 2 positive integers")
+
