@@ -1,12 +1,13 @@
-#!/etc/bin/python3
-import unittest
-from add_integer import add_integer
-
+# `python -m doctest -v progName.py`
 # to run a unittest, execute: `python -m unittest test_module_name`
 # alternatively, simply execute `python -m unittest` by itself
-class TestAddInteger(unittest.TestCase):
-	def test_common_usage(self):
-		self.assertEqual(add_integer(2, 2), 4)
-		self.assertEqual(add_integer(-2, 2), 0)
-	def test_bad_usage(self):
-		self.assertRaises(TypeError, add_integer, "a", 4)
+
+>>> import importlib
+>>> add_int = importlib.import_module("0-add_integer")
+>>> add_integer = add_int.add_integer
+>>> add_integer(2, 2)
+4
+>>> add_integer(2.0, -2)
+0
+>>> add_integer(-2.0, -2.0)
+-4
