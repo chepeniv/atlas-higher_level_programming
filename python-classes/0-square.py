@@ -7,14 +7,4 @@ Classes:
 
 class Square:
     """defines square objects with only one parameter
-
-    Attributes:
-        size(int): denotes the length of any side of this square
     """
-    def __init__(self, size = 0):
-        """creates a square object with only a single parameter
-
-        Args:
-            size(int): length of square's side
-        """
-        self.size = size
