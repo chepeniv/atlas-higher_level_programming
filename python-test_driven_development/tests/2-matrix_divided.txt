@@ -1,0 +1,12 @@
+# `python -m doctest -v progName.py`
+# to run a unittest, execute: `python -m unittest test_module_name`
+# alternatively, simply execute `python -m unittest` by itself
+
+>>> import importlib
+>>> matrix_module = importlib.import_module("2-matrix_divided.py")
+>>> matrix_div = matrix_module.matrix_divided
+>>> matrix_div(A, n)
+# test go here
+Traceback (most recent call last):
+	...
+OverflowError: numbers exceed range of -1000 to 1000
