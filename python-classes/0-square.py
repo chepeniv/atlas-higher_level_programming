@@ -5,7 +5,7 @@ Classes:
     Square
 """
 
-class square:
+class Square:
     """defines square objects with only one parameter
 
     Attributes:
