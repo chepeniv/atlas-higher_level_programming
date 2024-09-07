@@ -42,7 +42,7 @@ class Square:
         """
         h = position[0]
         v = position[1]
-        if type(position) is not tuple and type(h) is not int and type(v) is not int:
+        if (type(h), type(v)) != (int, int):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = position
@@ -56,9 +56,9 @@ class Square:
         """ prints to stdout a square filed with # and
         with whitespace by self.position
         """
-        for vertical_offset in range(self.position[1]):
-            print()
         if self.size != 0:
+            for vertical_offset in range(self.position[1]):
+                print()
             for height in range(self.size):
                 for horizontal_offset in range(self.position[0]):
                     print(" ", end='')
