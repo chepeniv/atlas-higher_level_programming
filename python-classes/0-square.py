@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""this module carries a single geometric class
+"""
 
 class square:
     """defines square objects with only one parameter
