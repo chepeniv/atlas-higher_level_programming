@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""practicing TDD given a single function 
+"""module with a single function to use doctest on
 """
 
 
@@ -14,4 +14,6 @@ def add_integer(a, b=98):
         raise TypeError("a must be an integer")
     if type(b) != int:
         raise TypeError("b must be an integer")
+    if abs(a) > 1000 or abs(b) > 1000:
+        raise OverflowError("numbers exceed range of -1000 to 1000")
     return a + b
