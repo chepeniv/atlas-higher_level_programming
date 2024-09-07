@@ -43,12 +43,11 @@ class Square:
         if len(position) == 2:
             h = position[0]
             v = position[1]
-        else:
-            self.__pos_error()
-        if (type(h), type(v)) != (int, int):
-            self.__pos_error()
-        else:
-            self.__position = position
+            if (type(h), type(v)) == (int, int):
+                if (h >= 0) and (v >= 0):
+                    self.__position = position
+                    return
+        self.__pos_error()
 
     def area(self):
         """ returns the area of current square
