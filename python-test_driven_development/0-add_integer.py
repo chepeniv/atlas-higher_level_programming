@@ -5,8 +5,6 @@
 
 def add_integer(a, b=98):
     """adds two given intgers together
-
-    testing considerations - checking type, testing range
     """
     if type(a) == float:
         a = int(a)
