@@ -11,7 +11,7 @@ class Square:
     Attributes:
         size(int): denotes the length of any side of this square
     """
-    def __init__(self, size):
+    def __init__(self, size = 0):
         """creates a square object with only a single parameter
 
         Args:
