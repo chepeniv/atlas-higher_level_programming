@@ -45,7 +45,7 @@ class Square:
             v = position[1]
         else:
             self.__pos_error()
-        if (type(h), type(v)) != (int, int)):
+        if (type(h), type(v)) != (int, int):
             self.__pos_error()
         else:
             self.__position = position
