@@ -7,11 +7,18 @@ class Square:
     """defines square objects with only one parameter
     """
 
+    def __init__(self, size=0):
+        """constructs a square with side of length `size`
+        """
+        self.size = size
+
+    @property
     def size(self):
         """ returns the size of current square
         """
-        return self.size
+        return self.__size
 
+    @size.setter
     def size(self, size):
         """modifies the size of the square 
         """
@@ -20,14 +27,9 @@ class Square:
         elif size < 0:
             raise ValueError("size must be >= 0")
         else:
-            self.size = size
+            self.__size = size
 
     def area(self):
         """ returns the area of current square
         """
-        return self.size ** 2
-
-    def __init__(self, size=0):
-        """constructs a square with side of length `size`
-        """
-        self.size(size)
+        return self.__size ** 2
