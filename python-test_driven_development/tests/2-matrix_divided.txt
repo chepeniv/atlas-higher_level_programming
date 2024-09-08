@@ -35,4 +35,4 @@ TypeError: Each row of the matrix must have the same size
 >>> matrix_div(B, u)
 Traceback (most recent call last):
 	...
-TypeError: matrix must be a matrix (list of lists) of integer/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
