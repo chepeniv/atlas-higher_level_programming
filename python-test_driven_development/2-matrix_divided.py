@@ -6,22 +6,24 @@
 def matrix_divided(matrix, div):
     """returns a duplicate matrix wherein each element is divided by div
     """
-    # check that elements of matrix are integers or floats
-    # otherwise raise TypeError("matrix must be a matrix (list of lists) of integer/floats")
-    # each row of the matrix must be the same size
-    # otherwise raise TypeError("Each row of the matrix must have the same size")
-    # div must be an int or float
-    # otherwiseh raise TypeError("div must be a number")
-    # div != 0; otherwise raise ZeroDivisionError("division by zero")
     # return a duplicate matrix wherein each element is divided by div and rounded to two decimal places
-    if type(a) is float:
-        a = int(a)
-    if type(b) is float:
-        b = int(b)
-    if type(a) is not int:
-        raise TypeError("a must be an integer")
-    if type(b) is not int:
-        raise TypeError("b must be an integer")
-    if abs(a) > 1000 or abs(b) > 1000:
-        raise OverflowError("numbers exceed range of -1000 to 1000")
-    return a + b
+
+    width = len(matrix[0])
+    for row in matrix:
+        for element in row:
+            if type(element) not in (int, float):
+                raise TypeError("matrix must be a matrix (list of lists) of integer/floats")
+        if width != len(row):
+            raise TypeError("Each row of the matrix must have the same size")
+
+    if type(div) not in (int, float):
+        raise TypeError("div must be a number")
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+
+    duplicate = []
+    for row in matrix:
+        row = map(lambda n: round(n / div, 2), row)
+        duplicate.append(list(row))
+
+    return duplicate
