@@ -5,15 +5,31 @@ running unittest
 	`python -m unittest`
 
 >>> import importlib
->>> name_module = importlib.import_module("3-say_my_name")
->>> say = name_module.say_my_name
->>> say("John", "Smith")
-My name is John Smith
->>> say("Walter", "White")
-My name is Walter White
->>> say("Roberto")
-My name is Roberto 
->>> say()
+>>> square_module = importlib.import_module("4-print_square")
+>>> print_sq = square_module.print_square
+>>> print_sq()
 Traceback (most recent call last):
 ...
-TypeError: say_my_name() missing 1 required positional argument: 'first'
+TypeError: print_square() missing 1 required positional argument: 'size'
+>>> print_sq(2)
+##
+##
+>>> print_sq(6)
+######
+######
+######
+######
+######
+######
+>>> print_sq(-2)
+Traceback (most recent call last):
+..
+ValueError: size must be >= 0
+>>> print_sq(3.45)
+Traceback (most recent call last):
+..
+TypeError: size must be an integer
+>>> print_sq(-1.25)
+Traceback (most recent call last):
+..
+TypeError: size must be an integer
