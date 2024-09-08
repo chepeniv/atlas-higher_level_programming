@@ -1,0 +1,17 @@
+running doctest:
+	python -m doctest -v testfile.txt
+running unittest
+	`python -m unittest test_module_name`
+	`python -m unittest`
+
+>>> import importlib
+>>> indent_module = importlib.import_module("5-text_indentation")
+>>> txt_indent = indent_module.text_indentation
+>>> txt_indent()
+Traceback (most recent call last):
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+>>> txt_indent(2)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
