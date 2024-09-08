@@ -4,10 +4,8 @@
 
 
 def say_my_name(first, last=""):
-    """impersonate the user 
+    """impersonate the user
     """
-    #if neither first or last are strings 
-    #       raise TypeError("{part} must be a string")
     if type(first) is not str:
         raise TypeError("first_name must be a string")
     if type(last) is not str:
