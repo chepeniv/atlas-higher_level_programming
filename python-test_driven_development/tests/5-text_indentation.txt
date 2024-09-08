@@ -15,3 +15,5 @@ TypeError: text_indentation() missing 1 required positional argument: 'text'
 Traceback (most recent call last):
 ...
 TypeError: text must be a string
+>>> txt_indent("   Tulsa Atlas School   ")
+Tulsa Atlas School
