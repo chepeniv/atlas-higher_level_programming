@@ -6,13 +6,12 @@
 def matrix_divided(matrix, div):
     """returns a duplicate matrix wherein each element is divided by div
     """
-    # return a duplicate matrix wherein each element is divided by div and rounded to two decimal places
-
     width = len(matrix[0])
     for row in matrix:
         for element in row:
             if type(element) not in (int, float):
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+                raise TypeError(
+                "matrix must be a matrix (list of lists) of integers/floats")
         if width != len(row):
             raise TypeError("Each row of the matrix must have the same size")
 
