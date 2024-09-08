@@ -1,0 +1,19 @@
+running doctest:
+	python -m doctest -v testfile.txt
+running unittest
+	`python -m unittest test_module_name`
+	`python -m unittest`
+
+>>> import importlib
+>>> name_module = importlib.import_module("3-say_my_name")
+>>> say = name_module.say_my_name
+>>> say("John", "Smith")
+My name is John Smith
+>>> say("Walter", "White")
+My name is Walter White
+>>> say("Roberto")
+My name is Roberto 
+>>> say()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first'
