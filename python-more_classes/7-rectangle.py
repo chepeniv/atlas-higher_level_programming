@@ -43,7 +43,7 @@ class Rectangle:
 
     @property
     def print_symbol(self):
-        return Rectangle.print_symbol
+        return str(Rectangle.print_symbol)
 
     @property
     def width(self):
