@@ -29,8 +29,8 @@ class Rectangle:
         render = ""
         if self.width != 0 and self.height != 0:
             for row in range(self.height - 1):
-                render += self.print_symbol * self.width + "\n"
-            render += self.print_symbol * self.width
+                render += str(self.print_symbol) * self.width + "\n"
+            render += str(self.print_symbol) * self.width
         return render
 
     def __repr__(self):
