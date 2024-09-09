@@ -29,8 +29,8 @@ class Rectangle:
         render = ""
         if self.width != 0 and self.height != 0:
             for row in range(self.height - 1):
-                render += Rectangle.print_symbol * self.width + "\n"
-            render += Rectangle.print_symbol * self.width
+                render += self.print_symbol * self.width + "\n"
+            render += self.print_symbol * self.width
         return render
 
     def __repr__(self):
@@ -40,10 +40,6 @@ class Rectangle:
         rep = "Rectangle({}, {})"
         rep = rep.format(self.width, self.height)
         return rep
-
-    @property
-    def print_symbol(self):
-        return str(Rectangle.print_symbol)
 
     @property
     def width(self):
@@ -56,10 +52,6 @@ class Rectangle:
         """returns the height of current Rectangle
         """
         return self.__height
-
-    @print_symbol.setter
-    def print_symbol(self, symbol):
-        Rectangle.print_symbol = symbol
 
     @width.setter
     def width(self, value):
