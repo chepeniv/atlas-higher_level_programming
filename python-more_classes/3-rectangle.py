@@ -23,7 +23,6 @@ class Rectangle:
             render += "#" * self.width
         return render
 
-
     @property
     def width(self):
         """returns the width of current Rectangle
