@@ -35,7 +35,6 @@ class Rectangle:
         else:
             self.__width = value
 
-
     @height.setter
     def height(self, value):
         """modifies the height of current Rectangle
