@@ -42,6 +42,10 @@ class Rectangle:
         return rep
 
     @property
+    def print_symbol(self):
+        return Rectangle.print_symbol
+
+    @property
     def width(self):
         """returns the width of current Rectangle
         """
@@ -52,6 +56,10 @@ class Rectangle:
         """returns the height of current Rectangle
         """
         return self.__height
+
+    @print_symbol.setter
+    def print_symbol(self, symbol):
+        Rectangle.print_symbol = symbol
 
     @width.setter
     def width(self, value):
