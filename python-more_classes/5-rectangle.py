@@ -22,6 +22,7 @@ class Rectangle:
                 render += "#" * self.width + "\n"
             render += "#" * self.width
         return render
+
     def __del__(self):
         """outputs a message whenever an instance of Rectangle is deleted
         """
