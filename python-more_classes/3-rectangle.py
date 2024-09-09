@@ -17,9 +17,10 @@ class Rectangle:
         of the current rectangle's width and height
         """
         render = ""
-        for row in range(self.height - 1):
-            render += "#" * self.width + "\n"
-        render += "#" * self.width
+        if self.width != 0 and self.height != 0:
+            for row in range(self.height - 1):
+                render += "#" * self.width + "\n"
+            render += "#" * self.width
         return render
 
 
