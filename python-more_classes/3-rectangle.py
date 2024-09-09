@@ -17,8 +17,9 @@ class Rectangle:
         of the current rectangle's width and height
         """
         render = ""
-        for row in range(self.height):
+        for row in range(self.height - 1):
             render += "#" * self.width + "\n"
+        render += "#" * self.width
         return render
 
 
