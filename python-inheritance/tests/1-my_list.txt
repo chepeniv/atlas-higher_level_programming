@@ -10,7 +10,7 @@ Traceback (most recent call last):
 OverflowError: numbers exceed range of -1000 to 1000
 
 >>> import importlib
->>> my_module = importlib.import_module("0-add_integer")
+>>> my_module = importlib.import_module("1-my_list")
 >>> MyClass = my_module.MyList
 >>> A = MyClass()
 >>> A.append(2)
@@ -18,7 +18,9 @@ OverflowError: numbers exceed range of -1000 to 1000
 >>> A.append(4)
 >>> A.print_sorted()
 [2, 3, 4]
+[2, 3, 4]
 >>> A.append(1)
 >>> A.append(0)
 >>> A.print_sorted()
+[0, 1, 2, 3, 4]
 [0, 1, 2, 3, 4]
