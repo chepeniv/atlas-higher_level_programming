@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""this module contains a single geometric class
+"""defines a single function
 """
 
 
-class Rectangle:
-    """defines rectangle objects
+def lookup(obj):
+    """returns a list of available attributes and methods of the given object
     """
-    pass
+    return dir(obj)
