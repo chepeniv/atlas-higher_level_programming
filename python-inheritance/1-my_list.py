@@ -2,6 +2,7 @@
 """defines a single subclass from parent list
 """
 
+
 class MyList(list):
     """custom class that extends parent list with a single method
     """
