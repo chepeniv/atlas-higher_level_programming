@@ -1,0 +1,15 @@
+#doctest :
+#		`python -m doctest -v progName.py`
+#unittest :
+#		`python -m unittest test_module_name`
+#	or
+#		`python -m unittest`
+
+Traceback (most recent call last):
+	...
+OverflowError: numbers exceed range of -1000 to 1000
+
+>>> import importlib
+>>> my_module = importlib.import_module("7-base_geometry")
+>>> MyClass = my_module.BaseGeometry
+>>> A = MyClass()
