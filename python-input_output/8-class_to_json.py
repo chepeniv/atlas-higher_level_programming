@@ -11,5 +11,3 @@ def class_to_json(obj):
             jdict.update({key: pydict.get(key)})
 
     return jdict
-
-
