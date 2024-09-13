@@ -1,0 +1,28 @@
+#doctest :
+#		`python -m doctest -v progName.py`
+#unittest :
+#		`python -m unittest test_module_name`
+#	or
+#		`python -m unittest`
+#
+################
+#
+# Traceback (most recent call last):
+# ...
+# Exception: error message
+
+>>> import importlib
+>>> my_module = importlib.import_module("1-my_list")
+>>> MyClass = my_module.MyList
+>>> A = MyClass()
+>>> A.append(2)
+>>> A.append(3)
+>>> A.append(4)
+>>> A.print_sorted()
+[2, 3, 4]
+[2, 3, 4]
+>>> A.append(1)
+>>> A.append(0)
+>>> A.print_sorted()
+[0, 1, 2, 3, 4]
+[0, 1, 2, 3, 4]

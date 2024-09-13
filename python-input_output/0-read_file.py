@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-"""defines a single function
+"""defines a single function for file i/o
 """
 
 
-def lookup(obj):
-    """returns a list of available attributes and methods of the given object
+def read_file(filename=""):
+    """reads from given utf-8 textfile 
     """
-    return dir(obj)
+    with open(filename) as file:
+        text = file.read()
+        print(text, end='')

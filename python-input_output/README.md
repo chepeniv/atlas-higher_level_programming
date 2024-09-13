@@ -1,19 +1,20 @@
-# INHERITANCE: 
+# INPUT/OUTPUT: 
 
 ## Objectives
 
-- what is a superclass, baseclass or parentclass
-- what is a subclass
-- how to list all attributes and methods of a class or instance
-- when can an instance have new attributes
-- how to inherit class from another
-- how to define a class with multiple base classes
-- what is the default class every class inherit from
-- how to override a method or attribute inherited from the base class
-- which attributes or methods are available by heritage to subclasses
-- what is the purpose of inheritance
-- what are, when and how to use `isinstance`, `issubclass`, `type` and `super` built-in functions
-
+- how to open a file
+- how to write text in a file
+- how to read the full content of a file
+- how to read a file line by line
+- how to move the cursor in a file
+- how to make sure a file is closed after using it
+- what is and how to use the with statement
+- what is json
+- what is serialization
+- what is deserialization
+- how to convert a python data structure to a json string
+- how to convert a json string to a python data structure
+- how to access command line parameters in a python script
 
 ## Testing
 
@@ -24,3 +25,4 @@
 ## Documentation
 
 _do not use the words `import` or `from` within comments_
+documentation is not a single word, use complete sentences explaining what’s the purpose of the module, class or method
