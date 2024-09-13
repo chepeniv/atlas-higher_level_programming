@@ -19,7 +19,7 @@ class Student:
             json_dict.update({"age": self.age})
         else:
             for key in attrs:
-                value = __dict__.get(key)
+                value = self.__dict__.get(key)
                 json_dict.update({key: value})
 
         return json_dict
