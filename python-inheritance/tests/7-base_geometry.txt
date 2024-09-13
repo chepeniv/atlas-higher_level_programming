@@ -42,3 +42,19 @@ TypeError: length must be an integer
 Traceback (most recent call last):
 	...
 TypeError: length must be an integer
+>>> a.integer_validator("length", 0)
+Traceback (most recent call last):
+	...
+ValueError: length must be greater than 0
+>>> a.integer_validator("length", [7])
+Traceback (most recent call last):
+	...
+TypeError: length must be an integer
+>>> a.integer_validator("length", (9,))
+Traceback (most recent call last):
+	...
+TypeError: length must be an integer
+>>> a.integer_validator("length", {32, 8})
+Traceback (most recent call last):
+	...
+TypeError: length must be an integer
