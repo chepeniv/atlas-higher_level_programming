@@ -13,7 +13,7 @@ class Student:
 
     def to_json(self, attrs=None):
         json_dict = {}
-        if attr == None:
+        if attrs == None:
             json_dict.update({"first_name": self.first_name})
             json_dict.update({"last_name": self.last_name})
             json_dict.update({"age": self.age})
