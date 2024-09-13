@@ -4,7 +4,8 @@
 
 
 def append_write(filename="", text=""):
-    """writes plaintext to a given utf-8 textfile
+    """appends plaintext to a given utf-8 textfile
+    returns total characters added
     """
     with open(filename, mode="a") as file:
         file.write(text)
