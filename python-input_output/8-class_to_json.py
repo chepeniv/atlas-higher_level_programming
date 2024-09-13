@@ -7,7 +7,7 @@ def class_to_json(obj):
     jdict = {}
     pydict = obj.__dict__
     for key in pydict.keys():
-        if key[0] != '_':
+        if key[-1] != '_':
             jdict.update({key: pydict.get(key)})
 
     return jdict
