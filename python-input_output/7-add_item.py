@@ -11,8 +11,8 @@ save_json = __import__('5-save_to_json_file').save_to_json_file
 
 try:
     jdata = load_json('add_item.json')
-except:
-    jdata =[]
+except FileNotFoundError:
+    jdata = []
 
 
 for item in range(1, len(sys.argv)):
