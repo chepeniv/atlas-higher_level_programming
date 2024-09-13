@@ -20,6 +20,7 @@ class Student:
         else:
             for key in attrs:
                 value = self.__dict__.get(key)
-                json_dict.update({key: value})
+                if value != None:
+                    json_dict.update({key: value})
 
         return json_dict
