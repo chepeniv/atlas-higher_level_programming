@@ -30,5 +30,3 @@ class Student:
             old_val = self.__dict__.get(key)
             if old_val is not None:
                 self.__dict__.update({key: new_val})
-
-    
