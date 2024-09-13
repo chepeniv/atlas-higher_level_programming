@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 """defines a single class
 """
-import importlib
-geometry = importlib.import_module("7-base_geometry")
 
 
-class Rectangle(geometry.BaseGeometry):
+class Rectangle(BaseGeometry):
     """inherits and extends parent class
     """
     def __init__(self, width, height):
