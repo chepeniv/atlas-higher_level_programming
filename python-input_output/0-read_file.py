@@ -4,7 +4,7 @@
 
 
 def read_file(filename=""):
-    """reads from given utf-8 textfile 
+    """reads from given utf-8 textfile
     """
     with open(filename) as file:
         text = file.read()
