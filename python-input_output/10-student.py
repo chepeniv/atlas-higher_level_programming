@@ -13,14 +13,14 @@ class Student:
 
     def to_json(self, attrs=None):
         json_dict = {}
-        if attrs == None:
+        if attrs is None:
             json_dict.update({"first_name": self.first_name})
             json_dict.update({"last_name": self.last_name})
             json_dict.update({"age": self.age})
         else:
             for key in attrs:
                 value = self.__dict__.get(key)
-                if value != None:
+                if value is not None:
                     json_dict.update({key: value})
 
         return json_dict
