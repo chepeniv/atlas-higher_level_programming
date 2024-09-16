@@ -45,17 +45,27 @@ when dealing with objects in python we often need to find out the class (type) t
 ```
 >>>
 ```
-these two operators `is` and `==` become quite important when dealing with container types in python. because each is implemented with its own peculiarities, leading to inconsistencies across the implementations of the various containers. most significantly, what happens when we pass these as arguments to functions that operate on them and when we directly attempt to modify them. so in order to troubleshoot we may need to use `id` and `is` to get a sense of how a particular container behaves.
+these two operators `is` and `==` become quite important when dealing with container types in python. because each is implemented with its own peculiarities, leading to inconsistencies across the implementations of the various containers. most significantly, what happens when we pass these as arguments to functions that operate on them and when we directly attempt to modify them. not only this, but we also need to know how assignments are passed around. and here too do these two become important. in order to troubleshoot around these cases we may need to use `id` and `is` to get a sense of how a particular container behaves.
 
 more generally, all of these functions discussed are great for debugging purposes, and it is a good idea to check their output in order to get a sense of what's really going on.
 
-## Mutable Objects
+## Mutability
+<!--
+at runtime, the type of an object cannot be altered, but if it is mutable its state can be changed. builtin primitive datatypes in python are immutable, while custom classes are usually mutable. immutable objects cannot be changed after creation attempting to do so may raise an exception. the only mutable builtins in python are `list`, `dict`, and `set`.[^3] the only real way to know which is which, is to check documentation.
 
-## Immutable Object
+immutable objects on their own are typically more resource efficient, they are quicker to access, but more expensive to modify because that involves the creation of a whole new object. if the size or content of a type is expected to change then mutable objects are the way to go.[^3]
 
-###	Why Does This Distinction Matter ?
+tuples are a peculiar case. the tuple itself may be immutble, yet its contents may be mutable.[^3] what this probably looks like under-the-hood is that for mutable elements a tuple might just hold an immutable addresses to the object. the address element cannot be changed, but the object at that location can.
 
-###	How Differently Does Python Treat Mutable and Immutable Objects ?
+mutability is the primary reason why `id`, `==`, and `is` become such important checks when modifiying and moving objects around.
+
+if an object is immutable and we "modify" the variable that refers to it, we in-fact modify the variable by changing what object the variable refers to. [^4] 
+
+-->
+
+### Why Does This Distinction Matter ?
+
+### How Differently Does Python Treat Mutable and Immutable Objects ?
 
 ## How Are Arguments Passed To Functions
 
@@ -68,3 +78,5 @@ cloning - allows us to modify a duplicate of a container type but also to have a
 
 [^1]: https://stackoverflow.com/questions/32083871/what-does-everything-mean-when-someone-says-everything-in-python-is-an-object
 [^2]: 
+[^3]: https://www.geeksforgeeks.org/mutable-vs-immutable-objects-in-python/
+[^4]: https://stackoverflow.com/questions/8056130/immutable-vs-mutable-types
