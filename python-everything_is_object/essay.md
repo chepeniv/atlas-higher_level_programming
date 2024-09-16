@@ -33,9 +33,20 @@ as it turns out, everything in python is an object. that is, according to stacko
 
 but before we go any further, what is a class ? that's basically a custom definition of a type, so that we're not limited to what's just out-of-the-box. classes are basically like OP `struct`s that are found in C. anyway, objects are instances of a class. to clarify the relation, a class is the blueprint, and an object is the device. this is a one-to-many relation -- one definition, many instances. 
 
-when dealing with objects there are three key pieces of information that we can extract. the first two are the kind of object it is an instance of (`type`) and the other how is it uniquely identified internally within python (`id`). the final crucial piece of information when dealing with any object is whether or not we can modify it. in other words, is it mutable or immutable. this also becomes a very important consideration when passing these objects around into functions and methods because it will affect the values that our variables hold and, in turn, whether our code behaves as expected or not. these three fundamental properties of an object are the focus of this post.
+when dealing with objects there are three key pieces of information that we can extract. the first two are the kind of object it is an instance of (`type`) and the other how is it uniquely identified internally within python (`id`). the final crucial piece of information when dealing with any object is whether or not we can modify it. in other words, is it mutable or immutable. this also becomes a very important consideration when passing these objects around into functions and methods because it will affect the values that our variables hold and, in turn, whether our code behaves as expected or not. these three fundamental properties of an object are the focus of this bLoGpOsT.
 
 ## `id()` and `type()`
+<!--
+notes: 
+id(obj) returns the unique integer memory address of the given object.
+common use-case is to check whether or not two variables refer to the same thing.
+the identity of an object is unique and constant during its lifetime. if objects lifetimes do not overlap, they may have the same id() value
+`is` and `==` in relation to id()
+variables are basically simple functions that may return etheir the their object or a duplicate of (depending on the language and circumstance)
+sometimes when troubleshooting it is a good idea to check with id or is or == to see what is really going on
+how containers are passed around
+how do ids change if after a value is modified
+-->
 
 ## Mutable Objects
 
@@ -48,6 +59,9 @@ when dealing with objects there are three key pieces of information that we can 
 ## How Are Arguments Passed To Functions
 
 ### Implications For Mutable and Immutable Objects
+<!--
+cloning - allows us to modify a duplicate of a container type but also to have accessible to an unmodified original 
+-->
 
 <img src="./assets/perhaps-programming.jpg" height="640"/>
 
