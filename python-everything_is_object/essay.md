@@ -13,7 +13,7 @@ Your posts should have many code/output examples to illustrate what you are expl
 -->
 
 # Python3 - Everythin is an Object (class essay)
-&mdash; _Jos&eacute; 'Chep&eacute;' N. Olmos on September 15, 2024_
+&mdash; _Jos&eacute; 'Chep&eacute;' N. Olmos on Septemb:er 15, 2024_
 
 <img src="./assets/oop-core-pillars.jpg" height="384"/>
 
@@ -60,10 +60,8 @@ id() and type(), mutable and immutable, passing variables to a function
 <!--
 -->
 
-###implications for mutable and immutable objects:
+### implications for mutable and immutable objects:
 
 <img src="./assets/perhaps-programming.jpg" height="640"/>
-
-----
 
 [^1]: https://stackoverflow.com/questions/32083871/what-does-everything-mean-when-someone-says-everything-in-python-is-an-object
