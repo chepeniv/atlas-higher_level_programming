@@ -51,6 +51,10 @@ more generally, all of these functions discussed are great for debugging purpose
 
 ## Mutability
 <!--
+
+### Why Does This Distinction Matter ?
+### How Differently Does Python Treat Mutable and Immutable Objects ?
+
 at runtime, the type of an object cannot be altered, but if it is mutable its state can be changed. builtin primitive datatypes in python are immutable, while custom classes are usually mutable. immutable objects cannot be changed after creation attempting to do so may raise an exception. the only mutable builtins in python are `list`, `dict`, and `set`.[^3] the only real way to know which is which, is to check documentation.
 
 immutable objects on their own are typically more resource efficient, they are quicker to access, but more expensive to modify because that involves the creation of a whole new object. if the size or content of a type is expected to change then mutable objects are the way to go.[^3]
@@ -59,18 +63,48 @@ tuples are a peculiar case. the tuple itself may be immutble, yet its contents m
 
 mutability is the primary reason why `id`, `==`, and `is` become such important checks when modifiying and moving objects around.
 
-if an object is immutable and we "modify" the variable that refers to it, we in-fact modify the variable by changing what object the variable refers to. [^4] 
+if an object is immutable and we "modify" the variable that refers to it, we in-fact modify the variable by changing what object the variable refers to.[^4] 
 
+mutable: to change content without changing the identity.[^4] 
+
+to borrow an example given in stackoverflow, here's how the two types of object can be expected to behave:
+```
+x = something # immutable type
+print x
+func(x)
+print x # prints the same thing
+
+x = something # mutable type
+print x
+func(x)
+print x # might print something different
+
+x = something # immutable type
+y = x
+print x
+# some statement that operates on y
+print x # prints the same thing
+
+x = something # mutable type
+y = x
+print x
+# some statement that operates on y
+print x # might print something different
+```
 -->
 
-### Why Does This Distinction Matter ?
-
-### How Differently Does Python Treat Mutable and Immutable Objects ?
-
-## How Are Arguments Passed To Functions
-
-### Implications For Mutable and Immutable Objects
+## Passing Arguments To Functions
 <!--
+### Implications For Mutable and Immutable Objects
+
+ultimately, where all this culminates is when considering how a function acts upon its inputs.
+
+there are two ways in which a function manipulates data passed onto it. the first, pass-by-value makes an internal copy of the value returned by a variable thereby leaving the original object alone and unmodified. the second, pass-by-reference actually addresses the object returned by a variable and thereby any modifications to the data are reflected outside of the function call.
+
+in relation to mutability, if an object is immutable then the default behaviour is to pass-by-value, if an object is mutable otherwise then pass-by-reference becomes an option. in the latter situation it is possible to simulate pass-by-value behavior by making copies within a function and manipulating those.
+
+in python, the model it uses is "pass by object reference" otherwise know as "pass by assignment" and i really don't know what that means, BUT depending on the mutability of the argument that gets passed, a function will behave differently. (immutable: pass-by-val;; mutable: pass-by-ref)
+
 cloning - allows us to modify a duplicate of a container type but also to have accessible to an unmodified original 
 -->
 
@@ -80,3 +114,5 @@ cloning - allows us to modify a duplicate of a container type but also to have a
 [^2]: 
 [^3]: https://www.geeksforgeeks.org/mutable-vs-immutable-objects-in-python/
 [^4]: https://stackoverflow.com/questions/8056130/immutable-vs-mutable-types
+[^5]: https://www.geeksforgeeks.org/pass-by-reference-vs-value-in-python/
+[^6]: https://www.geeksforgeeks.org/pass-by-reference-vs-value-in-python/
