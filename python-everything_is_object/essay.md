@@ -42,60 +42,63 @@ variables are basically simple functions that may return either their object or 
 when dealing with objects in python we often need to find out the class (type) that it belongs to or to extract its unique identifier. there are two builtin functions for these queries respectively `type(obj)` and `id(obj)`. the first, `obj()` takes any object as an argument and returns a `type` object that can then be analysed. it's really that straight forward. furthermore, there are two other builtin functions related to `type`: `isinstance(obj, (types, ...))` and `issubclass(obj, cls)`. they both return a boolean value. the first, `isinstance` returns `True` if `obj` is any type within the tuple argument `(types, ...)`. the later, `issubclass` only returns `True` if the type of `obj` is a subclass of `cls`. these may come in handy in use-cases where `type` alone might be a bit too awkward.
 
 `id(obj)` on the other hand, returns a unique integer memory address of the given variable's object. this _id_ remains unique and constant during the lifetime of the object. if the lifetime of objects do not overlap, then they may at separate points share the same identifier[^2]. the common use-cases of `id` are to determine what the id of a given object is and whether two variables do indeed _refer_ to the same object in memory. the shorthand for the later is to simply use the `is` operator, which returns `True` if both of its arguments refer to the same exact object. although it is similar to `==` they are NOT interchangeable -- _values_ may be the equal, but the objects may be different. we can easily demonstrate this:
-```
+
+```python
 >>>
 ```
+
 these two operators `is` and `==` become quite important when dealing with container types in python. because each is implemented with its own peculiarities, leading to inconsistencies across the implementations of the various containers. most significantly, what happens when we pass these as arguments to functions that operate on them and when we directly attempt to modify them. not only this, but we also need to know how assignments are passed around. and here too do these two become important. in order to troubleshoot around these cases we may need to use `id` and `is` to get a sense of how a particular container behaves.
 
 more generally, all of these functions discussed are great for debugging purposes, and it is a good idea to check their output in order to get a sense of what's really going on.
 
 ## Mutability
 <!--
-
 ### Why Does This Distinction Matter ?
 ### How Differently Does Python Treat Mutable and Immutable Objects ?
+-->
 
-at runtime, the type of an object cannot be altered, but if it is mutable its state can be changed. builtin primitive datatypes in python are immutable, while custom classes are usually mutable. immutable objects cannot be changed after creation attempting to do so may raise an exception. the only mutable builtins in python are `list`, `dict`, and `set`.[^3] the only real way to know which is which, is to check documentation.
+at runtime, the _type_ of an object cannot be altered, but if it is mutable its state can be changed. all the builtin primitive datatypes in python are immutable; the only exceptions are `list`, `dict`, and `set`. any custom class is usually mutable. an immutable object cannot be modified after creation and attempting to do so will raise an exception.[^3] the only real way to know which is which, is to check documentation.
+
+mutable: to change content without changing the identity.[^4] 
 
 immutable objects on their own are typically more resource efficient, they are quicker to access, but more expensive to modify because that involves the creation of a whole new object. if the size or content of a type is expected to change then mutable objects are the way to go.[^3]
+
+if an object is immutable and we "modify" the variable that refers to it, we in-fact modify the variable by changing what object the variable refers to.[^4] 
 
 tuples are a peculiar case. the tuple itself may be immutble, yet its contents may be mutable.[^3] what this probably looks like under-the-hood is that for mutable elements a tuple might just hold an immutable addresses to the object. the address element cannot be changed, but the object at that location can.
 
 mutability is the primary reason why `id`, `==`, and `is` become such important checks when modifiying and moving objects around.
 
-if an object is immutable and we "modify" the variable that refers to it, we in-fact modify the variable by changing what object the variable refers to.[^4] 
+borrowing an example given in stackoverflow that illustrates the point, here's how the two types of object can be expected to behave:
 
-mutable: to change content without changing the identity.[^4] 
+```python
+x = "hello world" # immutable type
+print(x)
+func(x)  # "modifies" x
+print(x) # output doesn't change
 
-to borrow an example given in stackoverflow, here's how the two types of object can be expected to behave:
-```
-x = something # immutable type
-print x
-func(x)
-print x # prints the same thing
+x = ["hello", "world"] # mutable type
+print(x)
+func(x)  # modifies x
+print(x) # actually outputs something different
 
-x = something # mutable type
-print x
-func(x)
-print x # might print something different
-
-x = something # immutable type
+x = "hello" # immutable type
 y = x
-print x
-# some statement that operates on y
-print x # prints the same thing
+print(x)
+func(y)  # modifies y
+print(x) # x remains unchanged
 
-x = something # mutable type
+x = ["hello", 0, True] # mutable type
 y = x
-print x
-# some statement that operates on y
-print x # might print something different
+print(x)
+func(y)  # modifies y 
+print(x) # actually outputs something different
 ```
--->
 
 ## Passing Arguments To Functions
 <!--
 ### Implications For Mutable and Immutable Objects
+-->
 
 ultimately, where all this culminates is when considering how a function acts upon its inputs.
 
@@ -106,13 +109,19 @@ in relation to mutability, if an object is immutable then the default behaviour 
 in python, the model it uses is "pass by object reference" otherwise know as "pass by assignment" and i really don't know what that means, BUT depending on the mutability of the argument that gets passed, a function will behave differently. (immutable: pass-by-val;; mutable: pass-by-ref)
 
 cloning - allows us to modify a duplicate of a container type but also to have accessible to an unmodified original 
--->
+
+depending on what a function does, pass-by-ref is more efficient than pass-by-val because it doesn't require that a copy be made, and because the object is manipulated directly there is no need to return it. 
 
 <img src="./assets/perhaps-programming.jpg" height="640"/>
 
 [^1]: https://stackoverflow.com/questions/32083871/what-does-everything-mean-when-someone-says-everything-in-python-is-an-object
+
 [^2]: 
+
 [^3]: https://www.geeksforgeeks.org/mutable-vs-immutable-objects-in-python/
+
 [^4]: https://stackoverflow.com/questions/8056130/immutable-vs-mutable-types
+
 [^5]: https://www.geeksforgeeks.org/pass-by-reference-vs-value-in-python/
+
 [^6]: https://www.geeksforgeeks.org/pass-by-reference-vs-value-in-python/
