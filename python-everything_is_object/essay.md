@@ -23,31 +23,42 @@ how to display the variable identifier (which is the memory address in the cpyth
 -->
 
 # Python3 - Everything is an Object (class essay)
-&mdash; _Jos&eacute; 'Chep&eacute;' N. Olmos on Septemb:er 15, 2024_
+&mdash; _Jos&eacute; 'Chep&eacute;' N. Olmos on Septemb:er 17, 2024_
 
 <img src="./assets/oop-core-pillars.jpg" height="384"/>
 
 ## Introduction
 
-as it turns out, everything in python is an object. that is, according to stackoverflow, "anything that can be assigned to a variable" -- not only values, but also, functions, classes, modules, and built-in types. this excludes keywords, punctuation, and operators.[^1] and as i was told, every object in python inherits either directly or indirectly from the core `object` class. 
+as it turns out, everything in python is an object. that is, according to stackoverflow, "anything that can be assigned to a variable" -- not only values, but also, functions, classes, modules, and built-in types. this excludes keywords, punctuation, and operators.[^1]
+and as i was told by my professor, every object in python inherits either directly or indirectly from the core `object` class. 
 
-but before we go any further, what is a class ? that's basically a custom definition of a type, so that we're not limited to just what's out-of-the-box. classes are basically like OP `struct`s that are found in C. anyway, objects are instances of a class. to clarify the relation, a class is the blueprint, and an object is the device. this is a one-to-many relation -- one definition, many instances. 
+but before we go any further, what is a class ? that's basically a custom definition of a type, so that we're not just limited to what's out-of-the-box. classes are basically like OP `struct`s that are found in C. anyway, objects are instances of a class. to clarify the relation, a class is the blueprint, and an object is the device. this is a one-to-many relation -- one definition, many instances. 
 
-when dealing with objects there are three key pieces of information that we can extract. the first two are the kind of object it is an instance of (`type`) and the how is it uniquely identified internally within python (`id`). the final crucial piece of information when dealing with any object is whether or not we can modify it. in other words, is it mutable or immutable. this also becomes a very important consideration when passing these objects around into functions and methods because it will affect the values that our variables hold and, in turn, whether our code behaves as expected or not. these three fundamental properties of an object are the focus of this bLoGpOsT.
+when dealing with objects there are three key pieces of information that we can extract. the first two are the kind of object it is an instance of (`type`) and how is it uniquely identified internally within python (`id`). the final crucial piece of information when dealing with any object is whether or not we can modify it. that is to say, is it mutable or immutable ? this also becomes a very important consideration when passing objects around into functions and methods because it will affect the values that our variables hold and, in turn, whether our code behaves as expected or not. these three fundamental properties of an object are the focus of this bLoGpOsT.
 
 ## `id()` and `type()`
 <!--
 variables are basically simple functions that may return either their object or a duplicate of (depending on the language and circumstance)
 -->
-when dealing with objects in python we often need to find out the class (type) that it belongs to or to extract its unique identifier. there are two builtin functions for these queries respectively `type(obj)` and `id(obj)`. the first, `obj()` takes any object as an argument and returns a `type` object that can then be analysed. it's really that straight forward. furthermore, there are two other builtin functions related to `type`: `isinstance(obj, (types, ...))` and `issubclass(obj, cls)`. they both return a boolean value. the first, `isinstance` returns `True` if `obj` is any type within the tuple argument `(types, ...)`. the later, `issubclass` only returns `True` if the type of `obj` is a subclass of `cls`. these may come in handy in use-cases where `type` alone might be a bit too awkward.
+when dealing with objects in python we often need to find out the class (type) that it belongs to or to extract its unique identifier. there are two builtin functions for these queries respectively `type(obj)` and `id(obj)`. the first, `obj()` takes any object as an argument and returns a `type` object that can then be analysed. it's really that straight forward. furthermore, there are two other builtin functions related to `type`: `isinstance(obj, (types, ...))` and `issubclass(obj, cls)`. they both return a boolean value. the first, `isinstance` returns `True` if `obj` is any type within the tuple argument `(types, ...)`. the latter, `issubclass` only returns `True` if the type of `obj` is a subclass of `cls`. these may come in handy in use-cases where `type` alone might be a bit too awkward.
 
-`id(obj)` on the other hand, returns a unique integer memory address of the given variable's object. this _id_ remains unique and constant during the lifetime of the object. if the lifetime of objects do not overlap, then they may at separate points share the same identifier[^2]. the common use-cases of `id` are to determine what the id of a given object is and whether two variables do indeed _refer_ to the same object in memory. the shorthand for the later is to simply use the `is` operator, which returns `True` if both of its arguments refer to the same exact object. although it is similar to `==` they are NOT interchangeable -- _values_ may be the equal, but the objects may be different. we can easily demonstrate this:
+`id(obj)` on the other hand, returns a unique integer memory address of the given variable's object. this _id_ remains unique and constant during the lifetime of the object. if the lifetime of objects do not overlap, then they may at separate points share the same identifier.[^2]
+the common use-cases of `id` are to determine what the id of a given object is and whether two variables do indeed _refer_ to the same object in memory. the shorthand for the latter is to simply use the `is` operator, which returns `True` if both of its arguments refer to the same exact object. although it is similar to `==` they are NOT interchangeable -- their _values_ may be equal, but the _objects_ may be different. we can easily demonstrate this:
 
 ```python
->>>
+>>> x = [0, 1, 2, 3]
+>>> y = [0, 1, 2, 3]
+>>> x == y
+True
+>>> x is y
+False
+>>> id(x)
+138308476390208
+>>> id(y)
+138308476392000
 ```
 
-these two operators `is` and `==` become quite important when dealing with container types in python. because each is implemented with its own peculiarities, leading to inconsistencies across the implementations of the various containers. most significantly, what happens when we pass these as arguments to functions that operate on them and when we directly attempt to modify them. not only this, but we also need to know how assignments are passed around. and here too do these two become important. in order to troubleshoot around these cases we may need to use `id` and `is` to get a sense of how a particular container behaves.
+these two operators `is` and `==` become quite important when dealing with container types in python because each is implemented with its own peculiarities, leading to inconsistencies across the implementations. most significantly, what happens when we pass these as arguments to functions that operate on them and when we directly attempt to modify them ? not only this, but we also need to know how assignments are passed around. and here too these two become important. in order to troubleshoot around these cases we may need to use `id` and `is` to get a sense of how a particular object behaves.
 
 more generally, all of these functions discussed are great for debugging purposes, and it is a good idea to check their output in order to get a sense of what's really going on.
 
@@ -114,12 +125,12 @@ depending on what a function does, pass-by-ref is more efficient than pass-by-va
 
 [^1]: https://stackoverflow.com/questions/32083871/what-does-everything-mean-when-someone-says-everything-in-python-is-an-object
 
-[^2]: 
+[^2]: https://www.geeksforgeeks.org/id-function-python
 
-[^3]: https://www.geeksforgeeks.org/mutable-vs-immutable-objects-in-python/
+[^3]: https://www.geeksforgeeks.org/mutable-vs-immutable-objects-in-python
 
 [^4]: https://stackoverflow.com/questions/8056130/immutable-vs-mutable-types
 
-[^5]: https://www.geeksforgeeks.org/pass-by-reference-vs-value-in-python/
+[^5]: https://www.geeksforgeeks.org/pass-by-reference-vs-value-in-python
 
-[^6]: https://www.geeksforgeeks.org/pass-by-reference-vs-value-in-python/
+[^6]: https://www.geeksforgeeks.org/pass-by-reference-vs-value-in-python
