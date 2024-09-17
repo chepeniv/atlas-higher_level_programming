@@ -112,14 +112,14 @@ print(x) # actually outputs something different
 ### Implications For Mutable and Immutable Objects
 -->
 
-ultimately, all this culminates when considering how a function acts upon its inputs.
-there are two ways in which a function manipulates data passed into it. the first, pass-by-value makes an internal copy of the value returned by a variable thereby leaving the original object alone and unmodified. the second, pass-by-reference actually directly addresses the object returned by a variable and thereby any modifications to its data are reflected outside of the function call.[^5]
+Ultimately, all this culminates when considering how a function acts upon its inputs.
+There are two ways in which a function manipulates data passed into it. The first, pass-by-value makes an internal copy of the value returned by a variable thereby leaving the original object alone and unmodified. The second, pass-by-reference actually directly addresses the object returned by a variable and thereby any modifications to its data are reflected outside of the function call.[^5]
 
-in relation to mutability, if an object is immutable then the default behaviour is to pass-by-value, if an object is mutable otherwise then pass-by-reference becomes the default. in the latter situation it is also possible to simulate pass-by-value behavior by making copies within a function definition and manipulating those instead of the original. this is where container-type cloning comes in handy. it allows us to modify a duplicate and to also have access to the unmodified original 
+In relation to mutability, if an object is immutable then the default behaviour is to pass-by-value, if an object is mutable otherwise then pass-by-reference becomes the default. In the latter situation it is also possible to simulate pass-by-value behavior by making copies within a function definition and manipulating those instead of the original. This is where container-type cloning comes in handy. It allows us to modify a duplicate and to also have access to the unmodified original 
 
-python uses the model "pass by object reference" (otherwise know as "pass by assignment") and i really don't know what that means, _BUT_ depending on the mutability of the argument that gets passed, a function will behave differently.[^5]
+Python uses the model "pass by object reference" (otherwise know as "pass by assignment") and i really don't know what that means, _BUT_ depending on the mutability of the argument that gets passed, a function will behave differently.[^5]
 
-usually, pass-by-ref is more efficient than pass-by-val because it doesn't require that a copy be made, and because the object is manipulated directly there is no need to return it.[^5]
+Usually, pass-by-ref is more efficient than pass-by-val because it doesn't require that a copy be made, and because the object is manipulated directly there is no need to return it.[^5]
 
 <img src="./assets/perhaps-programming.jpg" height="640"/>
 
