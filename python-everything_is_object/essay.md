@@ -29,7 +29,7 @@ how to display the variable identifier (which is the memory address in the cpyth
 
 ## Introduction
 
-As it turns out, everything in python is an object. That is, according to stackoverflow, "anything that can be assigned to a variable" -- not only values but also, functions, classes, modules, and built-in types. This excludes keywords, punctuation, and operators.[^1]
+As it turns out, everything in python is an object. That is, according to stackoverflow, "anything that can be assigned to a variable" -- not only values but also functions, classes, modules, and built-in types. This excludes keywords, punctuation, and operators.[^1]
 And as i was told by my professor, every object in python inherits either directly or indirectly from the core `object` class. 
 
 But before we go any further, what is a class? That's basically a custom definition of a type, so that we're not just limited to what's out-of-the-box. Classes are basically like OP `struct`s that are found in C. Anyway, objects are instances of a class. To clarify the relation, a class is the blueprint, and an object is the device. This is a one-to-many relation -- one definition, many instances. 
@@ -81,7 +81,7 @@ Typically, immutable objects are quicker to access but more expensive to modify 
 Tuples are a peculiar case. The tuple itself may be immutable, yet its contents may be mutable.[^3]
 What this probably looks like under-the-hood is that for mutable elements a tuple might just hold an immutable pointer to the addresses of that object. The pointer element cannot be changed, but the object at that location can.
 
-Mutability is the primary reason why `id`, `==`, and `is` become such important checks when modifying and moving objects around and to illustrate the difference in expected behavior here's a modified example borrowed from stackoverflow that demonstrates just that[^4]:
+Mutability is the primary reason why `id` and `is` become such important checks when modifying and moving objects around and to illustrate the difference in expected behavior here's a modified example borrowed from stackoverflow that demonstrates just that[^4]:
 
 ```python
 x = "hello world" # immutable type
@@ -112,13 +112,14 @@ print(x) # actually outputs something different
 ### Implications For Mutable and Immutable Objects
 -->
 
-Ultimately, all this culminates when considering how a function acts upon its inputs.
-There are two ways in which a function manipulates data passed into it. The first, pass-by-value makes an internal copy of the value returned by a variable thereby leaving the original object alone and unmodified. The second, pass-by-reference actually directly addresses the object returned by a variable and thereby any modifications to its data are reflected outside of the function call.[^5]
 
-In relation to mutability, if an object is immutable then the default behaviour is to pass-by-value, if an object is mutable otherwise then pass-by-reference becomes the default. In the latter situation it is also possible to simulate pass-by-value behavior by making copies within a function definition and manipulating those instead of the original. This is where container-type cloning comes in handy. It allows us to modify a duplicate and to also have access to the unmodified original.
+Let's consider how a function acts upon its inputs. Python uses the model "pass by object reference" (otherwise know as "pass by assignment") and i really don't know what that means, _BUT_ depending on the mutability of the argument that gets passed, a function will behave differently.[^5]
+This leaves only two ways that a function can manipulate data passed into it.
+If an object is immutable then the default behaviour is to pass-by-value, otherwise if an object is mutable then pass-by-reference becomes the default. 
 
-Python uses the model "pass by object reference" (otherwise know as "pass by assignment") and i really don't know what that means, _BUT_ depending on the mutability of the argument that gets passed, a function will behave differently.[^5]
+The first, pass-by-value makes an internal copy of the value returned by a variable thereby leaving the original object alone and unmodified.
 
+The second, pass-by-reference actually directly addresses the object returned by a variable and thereby any modifications to its data are reflected outside of the function call.[^5] In this case, it is also possible to simulate pass-by-value behavior by making copies within a function definition and manipulating those instead of the original. This is where container-type cloning comes in handy. It allows us to modify a duplicate and to also have access to the unmodified original.
 Usually, pass-by-ref is more efficient than pass-by-val because it doesn't require that a copy be made, and because the object is manipulated directly there is no need to return it.[^5]
 
 <img src="./assets/perhaps-programming.jpg" height="640"/>
