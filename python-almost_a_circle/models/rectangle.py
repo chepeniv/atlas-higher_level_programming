@@ -83,5 +83,8 @@ class Rectangle(Base):
     def display(self):
         """outputs to stdout a #-filled representation of the Rectangle object
         """
+        for row in range(self.y):
+            print()
         for row in range(self.height):
+            print(' ' * self.x, end='')
             print('#' * self.width)
