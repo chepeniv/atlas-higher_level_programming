@@ -2,6 +2,7 @@
 """ barebones module holding a single class
 """
 
+
 class Base:
     """ a simple class that currently only handles id assignments
     """
