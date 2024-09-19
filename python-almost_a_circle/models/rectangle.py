@@ -3,15 +3,15 @@
 """
 
 
-Base = __import__("base").Base
+import base
 
 
-class Rectangle(Base):
+class Rectangle(base.Base):
     """ foundational definition for Rectangle class
     """
 
     def __init__(self, width, height, x=0, y=0, id=None):
-        """ initializer for Base
+        """ initializer for Rectangle
         """
         super().__init__(id)
 
