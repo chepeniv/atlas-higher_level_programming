@@ -5,6 +5,7 @@
 
 from models.base import Base
 
+
 class Rectangle(Base):
     """ foundational definition for Rectangle class
     """
