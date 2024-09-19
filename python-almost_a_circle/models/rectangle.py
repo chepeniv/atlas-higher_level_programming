@@ -18,7 +18,7 @@ class Base:
             self.id = Base.__nb_objects
 
 
-class Rectangle(base.Base):
+class Rectangle(Base):
     """ foundational definition for Rectangle class
     """
 
