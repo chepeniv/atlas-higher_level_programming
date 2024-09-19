@@ -3,7 +3,7 @@
 """
 
 
-from base import Base
+Base = __import__('base').Base
 
 class Rectangle(Base):
     """ foundational definition for Rectangle class
