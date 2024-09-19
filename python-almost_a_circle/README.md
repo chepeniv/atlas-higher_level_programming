@@ -18,24 +18,24 @@
 
 ## Instructions
 
-- Write the first class Base
-- Write the class Rectangle that inherits from Base
-- Update the class Rectangle by adding validation of all setter methods and instantiation (id excluded)
-- Update the class Rectangle by adding the public method def area(self): that returns the area value of the Rectangle instance
-- Update the class Rectangle by adding the public method def display(self): that prints in stdout the Rectangle instance with the character # - you don’t need to handle x and y here
-- Update the class Rectangle by overriding the str method so that it returns [Rectangle] instance
-- Update the class Rectangle by improving the public method def display(self): to print in stdout the Rectangle instance with the character # by taking care of x and y
-- Update the class Rectangle by adding the public method def update(self, \*args): that assigns an argument to each attribute
-- Update the class Rectangle by updating the public method def update(self, \*args): by changing the prototype to update(self, \*args, kwargs) that assigns a key/value argument to attributes
-- Write the class Square that inherits from Rectangle
-- Update the class Square by adding the public getter and setter size
-- Update the class Square by adding the public method def update(self, \*args, kwargs) that assigns attributes
-- Update the class Rectangle by adding the public method def to_dictionary(self): that returns the dictionary representation of a Rectangle
-- Update the class Square by adding the public method def to_dictionary(self): that returns the dictionary representation of a Square
-- Update the class Base by adding the class method def savetofile(cls, listobjs): that writes the JSON string representation of listobjs to a file
-- Update the class Base by adding the static method def fromjsonstring(jsonstring): that returns the list of the JSON string representation jsonstring
-- Update the class Base by adding the class method def create(cls, dictionary): that returns an instance with all attributes already set
-- Update the class Base by adding the class method def loadfromfile(cls): that returns a list of instances
+- create `Base` class
+- create `Rectangle(Base)` class
+- update `Rectangle`: add validation to all setter methods and instantiation (id excluded)
+- update `Rectangle`: add public method `def area(self)` that returns area 
+- update `Rectangle`: add public method `def display(self)` that prints to stdout the rectangle using the character # - no need to handle x and y 
+- update `Rectangle`: override `str` method so that it returns [rectangle] instance
+- update `Rectangle`: improve public method `def display(self)` to handle x and y
+- update `Rectangle`: add public method `def update(self, *args)` to assign an argument to each attribute
+- update `Rectangle`: update public method `def update(self, *args)` by changing the prototype to `update(self, *args, kwargs)` that assigns a key/value argument to attributes
+- create `Square(Rectangle)` class
+- update `Square`: add public getter and setter for `size`
+- update `Square`: add public method `def update(self, *args, kwargs)` that assigns attributes
+- update `Rectangle`: add public method `def to_dictionary(self)` that returns the dictionary representation of a rectangle
+- update `Square`: add public method `def to_dictionary(self)` that returns the dictionary representation of a square
+- update `Base`: add class method `def savetofile(cls, listobjs)` that writes the json string representation of listobjs to a file
+- update `Base`: add static method `def fromjsonstring(jsonstring)` that returns the list of the json string representation jsonstring
+- update `Base`: add class method `def create(cls, dictionary)` to return an instance with all attributes already set
+- update `Base`: add class method `def loadfromfile(cls)` to return a list of instances
 
 ## Learning Objectives
 
