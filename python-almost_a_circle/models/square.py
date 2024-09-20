@@ -27,3 +27,18 @@ class Square(Rectangle):
     def size(self, size):
         self.width = size
         self.height = size
+    
+    def update(self, *args, **kwargs):
+        """ modifies the values of the current object based either on argument
+        position or keywords
+        """
+        keys = ['id', '_Rectangle__size', '_Rectangle__x', '_Rectangle__y']
+        argkeys = ['id', 'size', 'x', 'y']
+        if len(args) > 0:
+            for item in range(len(args)):
+                self.__dict__.update({keys[item]: args[item]})
+        else:
+            for item in range(5):
+                value = kwargs.get(argkeys[item])
+                if value is not None:
+                    self.__dict__.update({keys[item]: value})
