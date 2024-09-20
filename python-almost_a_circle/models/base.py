@@ -24,15 +24,17 @@ class Base:
     def to_json_string(dict_list):
         """ a function that builds a json string representation of
         a list of dictinaries
-        """
         json_string = ""
+        """
         if dict_list is None or len(dict_list) == 0:
             return "[]"
         else:
+            """
             json_string += "["
             for index in range(len(dict_list) - 1):
                 json_string += json.dumps(dict_list[index])
                 json_string += ", "
             json_string += json.dumps(dict_list[-1])
             json_string += "]"
-            return json_string
+            """
+            return json.dumps(dict_list)
