@@ -30,8 +30,9 @@ class Base:
             return "[]"
         else:
             json_string += "["
-            for dictionary in dict_list:
-                json_string += json.dumps(dictionary)
+            for index in range(len(dict_list) - 1):
+                json_string += json.dumps(dict_list[index])
                 json_string += ", "
+            json_string += json.dumps(dict_list[-1])
             json_string += "]"
             return json_string
