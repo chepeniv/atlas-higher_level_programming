@@ -26,7 +26,7 @@ class Base:
         a list of dictinaries
         """
         json_string = ""
-        if dict_list is None or len(dict_list) = 0:
+        if dict_list is None or len(dict_list) == 0:
             return "[]"
         else:
             json_string += "["
