@@ -3,6 +3,9 @@
 """
 
 
+import json
+
+
 class Base:
     """ a simple class that currently only handles id assignments
     """
@@ -16,3 +19,16 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    def to_json_string(dict_list):
+        json_string = ""
+        if len(dict_list) > 0:
+
+            json_string += "["
+            for dictionary in dict_list:
+                json_string += json.dumps(dictionary)
+            json_string += "]"
+
+            return json_string
+        else:
+            return "[]"
