@@ -11,9 +11,9 @@ class Square(Rectangle):
     """
 
     def __init__(self, size, x=0, y=0, id=None):
-        """ initializer for Rectangle
+        """ initializer for Square
         """
-        super().__init__(id, size, size, x, y)
+        super().__init__(size, size, x, y, id)
 
     def __str__(self):
         obj_str = "[Square] ({}) {}/{} - {}"
