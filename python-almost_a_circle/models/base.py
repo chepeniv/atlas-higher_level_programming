@@ -32,5 +32,6 @@ class Base:
             json_string += "["
             for dictionary in dict_list:
                 json_string += json.dumps(dictionary)
+                json_string += ", "
             json_string += "]"
             return json_string
