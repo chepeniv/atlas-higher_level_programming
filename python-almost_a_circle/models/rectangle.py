@@ -101,9 +101,6 @@ class Rectangle(Base):
                 self.__dict__.update({keys[item]: args[item]})
         else:
             for item in range(4):
-                try: 
-                    value = kwargs.get(argkeys[item])
-                except TypeError:
-                    continue
+                value = kwargs.get(argkeys[item])
                 if value is not None:
                     self.__dict__.update({keys[item]: value})
