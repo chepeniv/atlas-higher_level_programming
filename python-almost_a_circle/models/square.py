@@ -32,8 +32,9 @@ class Square(Rectangle):
         """ modifies the values of the current object based either on argument
         position or keywords
         """
-        keys = ['id', '_Rectangle__size', '_Rectangle__x', '_Rectangle__y']
-        argkeys = ['id', 'size', 'x', 'y']
+        keys = ['id', '_Rectangle__width', '_Rectangle__height',
+                '_Rectangle__x', '_Rectangle__y']
+        argkeys = ['id', 'size', 'size', 'x', 'y']
         if len(args) > 0:
             for item in range(len(args)):
                 self.__dict__.update({keys[item]: args[item]})
