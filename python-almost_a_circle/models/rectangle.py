@@ -4,7 +4,6 @@
 
 
 from models.base import Base
-# from base import Base
 
 
 class Rectangle(Base):
@@ -90,11 +89,21 @@ class Rectangle(Base):
             print(' ' * self.x, end='')
             print('#' * self.width)
 
-    def update(self, *args):
-        """ modifies the values of the current object based on argument
-        position
+    def update(self, *args, **kwargs):
+        """ modifies the values of the current object based either on argument
+        position or keywords
         """
         keys = ['id', '_Rectangle__width', '_Rectangle__height',
                 '_Rectangle__x', '_Rectangle__y']
-        for item in range(len(args)):
-            self.__dict__.update({keys[item]: args[item]})
+        argkeys = ['id', 'width', 'height', 'x', 'y']
+        if len(args) > 0:
+            for item in range(len(args)):
+                self.__dict__.update({keys[item]: args[item]})
+        else:
+            for item in range(4):
+                try: 
+                    value = kwargs.get(argkeys[item])
+                except TypeError:
+                    continue
+                if value is not None:
+                    self.__dict__.update({keys[item]: value})
