@@ -4,6 +4,7 @@
 
 
 from models.base import Base
+#from base import Base
 
 
 class Rectangle(Base):
@@ -88,3 +89,8 @@ class Rectangle(Base):
         for row in range(self.height):
             print(' ' * self.x, end='')
             print('#' * self.width)
+
+    def update(self, *args):
+        keys = ['id', '_Rectangle__width', '_Rectangle__height', '_Rectangle__x', '_Rectangle__y'] 
+        for item in range(len(args)):
+            self.__dict__.update({keys[item]: args[item]})
