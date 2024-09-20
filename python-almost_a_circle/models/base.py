@@ -26,13 +26,11 @@ class Base:
         a list of dictinaries
         """
         json_string = ""
-        if len(dict_list) > 0 and dict_list is not None:
-
+        if dict_list is not None or len(dict_list) = 0:
+            return "[]"
+        else:
             json_string += "["
             for dictionary in dict_list:
                 json_string += json.dumps(dictionary)
             json_string += "]"
-
             return json_string
-        else:
-            return "[]"
