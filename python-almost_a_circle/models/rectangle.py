@@ -91,6 +91,8 @@ class Rectangle(Base):
             print('#' * self.width)
 
     def update(self, *args):
+        """ modifies the values of the current object based on argument position
+        """
         keys = ['id', '_Rectangle__width', '_Rectangle__height', '_Rectangle__x', '_Rectangle__y'] 
         for item in range(len(args)):
             self.__dict__.update({keys[item]: args[item]})
