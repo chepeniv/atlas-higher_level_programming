@@ -27,7 +27,7 @@ class Square(Rectangle):
     def size(self, size):
         self.width = size
         self.height = size
-    
+
     def update(self, *args, **kwargs):
         """ modifies the values of the current object based either on argument
         position or keywords
