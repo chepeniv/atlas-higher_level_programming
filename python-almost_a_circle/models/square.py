@@ -38,7 +38,7 @@ class Square(Rectangle):
             for item in range(len(args)):
                 self.__dict__.update({keys[item]: args[item]})
         else:
-            for item in range(5):
+            for item in range(4):
                 value = kwargs.get(argkeys[item])
                 if value is not None:
                     self.__dict__.update({keys[item]: value})
