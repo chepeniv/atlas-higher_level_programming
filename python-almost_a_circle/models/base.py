@@ -21,6 +21,9 @@ class Base:
             self.id = Base.__nb_objects
 
     def to_json_string(dict_list):
+        """ a function that builds a json string representation of
+        a list of dictinaries
+        """
         json_string = ""
         if len(dict_list) > 0:
 
