@@ -20,12 +20,13 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
+    @staticmethod
     def to_json_string(dict_list):
         """ a function that builds a json string representation of
         a list of dictinaries
         """
         json_string = ""
-        if len(dict_list) > 0:
+        if len(dict_list) > 0 and dict_list is not None:
 
             json_string += "["
             for dictionary in dict_list:
