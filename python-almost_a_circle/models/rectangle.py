@@ -106,6 +106,9 @@ class Rectangle(Base):
                     self.__dict__.update({keys[item]: value})
 
     def to_dictionary(self):
+        """ construct and return a dictionary of the current
+        object's properties
+        """
         return {'id': self.id,
                 'width': self.width,
                 'height': self.height,
