@@ -104,3 +104,10 @@ class Rectangle(Base):
                 value = kwargs.get(argkeys[item])
                 if value is not None:
                     self.__dict__.update({keys[item]: value})
+
+    def to_dictionary(self):
+        return {'id': self.id,
+                'width': self.width,
+                'height': self.height,
+                'x': self.x,
+                'y': self.y}
