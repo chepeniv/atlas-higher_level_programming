@@ -42,3 +42,12 @@ class Square(Rectangle):
                 value = kwargs.get(argkeys[item])
                 if value is not None:
                     self.__dict__.update({keys[item]: value})
+
+    def to_dictionary(self):
+        """ construct and return a dictionary of the current
+        object's properties
+        """
+        return {'id': self.id,
+                'size': self.size,
+                'x': self.x,
+                'y': self.y}
