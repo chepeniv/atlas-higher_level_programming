@@ -43,14 +43,11 @@ class Base:
         """ takes a json string and saves it to a file
         """
         if list_objs is not None and len(list_objs) > 0:
-            if type(list_objs[0]) is Rectangle:
-                filename = "Rectangle.json"
-            elif type(list_objs[0]) is Square:
-                filename = "Square.json"
             json_string = cls.to_json_string(list_objs)
         else:
-            filename = "Base.json"
             json_string = ""
 
-        with open(filename, mode="w") as jsonfile:
+        filename = str(type(cls))
+
+        with open(filename + ".json", mode="w") as jsonfile:
             jsonfile.write(json_string)
