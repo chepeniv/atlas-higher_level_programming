@@ -79,13 +79,13 @@ class Base:
         """
         """
         if str(cls).find("Rectangle") > 0:
-            instance = Rectangle(0, 0)
+            instance = cls(0, 0)
             instance.update(
                     width = desc.get('width'),
                     height = desc.get('height'),
                     )
         elif str(cls).find("Square") > 0:
-            instance = Square(0)
+            instance = cls(0)
             instance.update(size = desc.get('size'))
 
         instance.update(
