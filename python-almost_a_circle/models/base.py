@@ -67,5 +67,9 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        return json.loads(json_string)
-
+        """ takes a json string and returns a list object
+        """
+        if json_string is None:
+            return []
+        else:
+            return json.loads(json_string)
