@@ -109,13 +109,14 @@ class Base:
             filename = "Square.json"
 
         try:
-            with open(filenome, "r") as jfile:
+            with open(filename, "r") as jfile:
                 jdata = jfile.read()
         except:
             jdata = "[]"
 
         jdata = cls.from_json_string(jdata)
+
         for item in jdata:
-            list_of_objects.append(cls.create(item))
+            list_of_objects.append(cls.create(**item))
 
         return list_of_objects
