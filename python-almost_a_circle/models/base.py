@@ -48,9 +48,13 @@ class Base:
         list_of_dicts = []
         for index in range(len(list_of_objects)):
             list_of_dicts.append(list_of_objects[index].to_dictionary())
+            """ it is really interesting that i can call a method only
+            defined in the child class from within its parent class
+            """
 
         json_string = cls.to_json_string(list_of_dicts)
 
+        # type() wasn't returning the correct type
         if str(cls).find("Rectangle") > 0:
             filename = "Rectangle"
         elif str(cls).find("Square") > 0:
@@ -60,3 +64,8 @@ class Base:
 
         with open(filename + ".json", "w") as jsonfile:
             jsonfile.write(json_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        return json.loads(json_string)
+
