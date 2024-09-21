@@ -93,3 +93,5 @@ class Base:
                 y = desc.get('y'),
                 id = desc.get('id')
                 )
+
+        return instance
