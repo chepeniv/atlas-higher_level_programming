@@ -81,17 +81,17 @@ class Base:
         if str(cls).find("Rectangle") > 0:
             instance = cls(1, 1)
             instance.update(
-                    width = desc.get('width'),
-                    height = desc.get('height'),
+                    width=desc.get('width'),
+                    height=desc.get('height'),
                     )
         elif str(cls).find("Square") > 0:
-            instance = cls(1)
-            instance.update(size = desc.get('size'))
+            instance=cls(1)
+            instance.update(size=desc.get('size'))
 
         instance.update(
-                x = desc.get('x'),
-                y = desc.get('y'),
-                id = desc.get('id')
+                x=desc.get('x'),
+                y=desc.get('y'),
+                id=desc.get('id')
                 )
 
         return instance
