@@ -111,7 +111,7 @@ class Base:
         try:
             with open(filename, "r") as jfile:
                 jdata = jfile.read()
-        except:
+        except FileNotFoundError:
             jdata = "[]"
 
         jdata = cls.from_json_string(jdata)
