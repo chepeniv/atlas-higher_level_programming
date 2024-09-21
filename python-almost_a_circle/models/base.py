@@ -47,7 +47,7 @@ class Base:
 
         list_of_dicts = []
         for index in range(len(list_of_objects)):
-            list_of_dicts.append(list_of_objects[index].__dict__)
+            list_of_dicts.append(list_of_objects[index].to_dictionary())
 
         json_string = cls.to_json_string(list_of_dicts)
 
