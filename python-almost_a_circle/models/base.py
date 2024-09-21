@@ -39,7 +39,7 @@ class Base:
             """
 
     @classmethod
-    def save_to_file(cls, list_of_objects):
+    def save_to_file(cls, list_of_objects = []):
         """ takes a json string and saves it to a file
         """
         list_of_dicts = []
