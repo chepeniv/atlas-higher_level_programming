@@ -39,9 +39,12 @@ class Base:
             """
 
     @classmethod
-    def save_to_file(cls, list_of_objects = []):
+    def save_to_file(cls, list_of_objects):
         """ takes a json string and saves it to a file
         """
+        if list_of_objects is None:
+            list_of_objects = []
+
         list_of_dicts = []
         for index in range(len(list_of_objects)):
             list_of_dicts.append(list_of_objects[index].__dict__)
