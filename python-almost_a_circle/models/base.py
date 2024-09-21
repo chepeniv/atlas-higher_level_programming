@@ -112,7 +112,7 @@ class Base:
             with open(filenome, "r") as jfile:
                 jdata = jfile.read()
         except:
-            jdata = ""
+            jdata = "[]"
 
         jdata = cls.from_json_string(jdata)
         for item in jdata:
