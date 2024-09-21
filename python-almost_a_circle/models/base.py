@@ -47,7 +47,7 @@ class Base:
         else:
             json_string = ""
 
-        filename = str(type(cls))
+        filename = str(type(cls)).split("'")
 
-        with open(filename + ".json", "w") as jsonfile:
+        with open(filename[1] + ".json", "w") as jsonfile:
             jsonfile.write(json_string)
