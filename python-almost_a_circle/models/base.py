@@ -76,7 +76,8 @@ class Base:
 
     @classmethod
     def create(cls, **desc):
-        """
+        """ creates a new instance of the class with the values
+        denoted in desc
         """
         if str(cls).find("Rectangle") > 0:
             instance = cls(1, 1)
@@ -95,3 +96,24 @@ class Base:
                 )
 
         return instance
+
+    @classmethod
+    def load_from_file(cls):
+        """ returns a list of instances bassed on json file data
+        """
+        list_of_objects = []
+        try:
+            with open("Rectangle.json", "r") as rectangle:
+                jdata = rectangle.read()
+        else:
+            with open("Square.json", "r") as square:
+                jdata = square.read()
+        except:
+            jdata = ""
+
+        jdata = cls.from_json_string(jdata)
+        for item in jdata:
+            list_of_objects.append(cls.create(item))
+
+        return list_of_objects
+
