@@ -37,3 +37,11 @@ class Base:
             json_string += json.dumps(dict_list[-1])
             json_string += "]"
             """
+
+    @staticmethod
+    def save_to_file(cls, list_objs):
+        """ takes a json string and saves it to a file
+        """
+        json_string = cls.to_json_string(list_objs)
+        with open(filename, mode="w") as jsonfile:
+            jsonfile.write(json_string)
