@@ -119,4 +119,3 @@ class Base:
             list_of_objects.append(cls.create(item))
 
         return list_of_objects
-
