@@ -49,5 +49,5 @@ class Base:
 
         filename = str(type(cls))
 
-        with open(filename + ".json", mode="w") as jsonfile:
+        with open(filename + ".json", "w") as jsonfile:
             jsonfile.write(json_string)
