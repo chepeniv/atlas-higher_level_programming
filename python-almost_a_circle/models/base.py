@@ -55,9 +55,9 @@ class Base:
         json_string = cls.to_json_string(list_of_dicts)
 
         # type() wasn't returning the correct type
-        if str(cls).find("Rectangle") > 0:
+        if cls is Rectangle:
             filename = "Rectangle"
-        elif str(cls).find("Square") > 0:
+        elif cls is Square:
             filename = "Square"
         else:
             filename = "Base"
@@ -73,3 +73,23 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **desc):
+        """
+        """
+        if cls is Rectangle:
+            instance = Rectangle(0, 0)
+            instance.update(
+                    width = desc.get('width'),
+                    height = desc.get('height'),
+                    )
+        elif cls is Square:
+            instance = Square(0)
+            instance.update(size = desc.get('size'))
+
+        instance.update(
+                x = desc.get('x'),
+                y = desc.get('y'),
+                id = desc.get('id')
+                )
