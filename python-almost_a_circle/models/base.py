@@ -39,7 +39,7 @@ class Base:
             """
 
     @staticmethod
-    def save_to_file(cls, list_objs):
+    def save_to_file(cls, list_objs=None):
         """ takes a json string and saves it to a file
         """
         if list_objs is not None and len(list_objs) > 0:
