@@ -38,7 +38,7 @@ class Base:
             json_string += "]"
             """
 
-    @staticmethod
+    @classmethod
     def save_to_file(cls, list_objs=None):
         """ takes a json string and saves it to a file
         """
