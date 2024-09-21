@@ -85,7 +85,7 @@ class Base:
                     height=desc.get('height'),
                     )
         elif str(cls).find("Square") > 0:
-            instance=cls(1)
+            instance = cls(1)
             instance.update(size=desc.get('size'))
 
         instance.update(
