@@ -55,9 +55,9 @@ class Base:
         json_string = cls.to_json_string(list_of_dicts)
 
         # type() wasn't returning the correct type
-        if cls is Rectangle:
+        if cls is models.Rectangle:
             filename = "Rectangle"
-        elif cls is Square:
+        elif cls is models.Square:
             filename = "Square"
         else:
             filename = "Base"
@@ -78,13 +78,13 @@ class Base:
     def create(cls, **desc):
         """
         """
-        if cls is Rectangle:
-            instance = Rectangle(0, 0)
+        if cls is models.Rectangle:
+            instance = cls.Rectangle(0, 0)
             instance.update(
                     width = desc.get('width'),
                     height = desc.get('height'),
                     )
-        elif cls is Square:
+        elif cls is models.Square:
             instance = Square(0)
             instance.update(size = desc.get('size'))
 
