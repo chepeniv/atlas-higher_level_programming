@@ -102,12 +102,15 @@ class Base:
         """ returns a list of instances bassed on json file data
         """
         list_of_objects = []
-        try:
-            with open("Rectangle.json", "r") as rectangle:
-                jdata = rectangle.read()
+
+        if str(cls).find("Rectangle") > 0:
+            filename = "Rectangle.json"
         else:
-            with open("Square.json", "r") as square:
-                jdata = square.read()
+            filename = "Square.json"
+
+        try:
+            with open(filenome, "r") as jfile:
+                jdata = jfile.read()
         except:
             jdata = ""
 
