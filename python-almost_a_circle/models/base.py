@@ -39,15 +39,21 @@ class Base:
             """
 
     @classmethod
-    def save_to_file(cls, list_objs=None):
+    def save_to_file(cls, list_of_objects):
         """ takes a json string and saves it to a file
         """
-        if list_objs is not None and len(list_objs) > 0:
-            json_string = cls.to_json_string(list_objs)
-        else:
-            json_string = ""
+        list_of_dicts = []
+        for index in range(len(list_of_objects)):
+            list_of_dicts.append(list_of_objects[index].__dict__)
 
-        filename = str(type(cls)).split("'")
+        json_string = cls.to_json_string(list_of_dicts)
 
-        with open(filename[1] + ".json", "w") as jsonfile:
+        if str(cls).find("Rectangle") > 0:
+            filename = "Rectangle"
+        elif str(cls).find("Square") > 0:
+            filename = "Square"
+        else: 
+            filename = "Base"
+
+        with open(filename + ".json", "w") as jsonfile:
             jsonfile.write(json_string)
