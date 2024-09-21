@@ -51,16 +51,12 @@ class Base:
 
         json_string = cls.to_json_string(list_of_dicts)
 
-        filename = str(type(cls)).split("'")
-        filename = filename[1]
-        """
         if str(cls).find("Rectangle") > 0:
             filename = "Rectangle"
         elif str(cls).find("Square") > 0:
             filename = "Square"
         else:
             filename = "Base"
-        """
 
         with open(filename + ".json", "w") as jsonfile:
             jsonfile.write(json_string)
