@@ -41,6 +41,7 @@
 
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
 
 
 class TestBaseClass(unittest.TestCase):
@@ -74,6 +75,26 @@ class TestBaseClass(unittest.TestCase):
 
     # def test_from_json_string_exist(self):
     # def test_from_json_string_list_exist(self):
+
+
+class TestRectangleClass(unittest.TestCase):
+    """ class containing testing functions for Base class
+    """
+
+    def test_rectangle_init_2_params(self):
+        rectA = Rectangle(1, 2)
+        self.assertEqual(rectA.width, 1)
+        self.assertEqual(rectA.height, 2)
+
+    def test_rectangle_init_3_params(self):
+        rectB = Rectangle(1, 2, 3)
+        self.assertNotEqual(rectB.x, 0)
+        self.assertEqual(rectB.x, 3)
+
+    def test_rectangle_init_4_params(self):
+        rectC = Rectangle(1, 2, 3, 4)
+        self.assertNotEqual(rectC.y, 0)
+        self.assertEqual(rectC.y, 4)
 
 if __name__== '__main__':
     unittest.main()
