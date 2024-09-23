@@ -81,36 +81,66 @@ class TestRectangleClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
 
-    def test_rectangle_init_2_params(self):
+    def test_rect_2_params(self):
         rectA = Rectangle(1, 2)
         self.assertEqual(rectA.width, 1)
         self.assertEqual(rectA.height, 2)
 
-    def test_rectangle_init_3_params(self):
+    def test_rect_3_params(self):
         rectB = Rectangle(1, 2, 3)
-        self.assertNotEqual(rectB.x, 0)
         self.assertEqual(rectB.x, 3)
 
-    def test_rectangle_init_4_params(self):
+    def test_rect_4_params(self):
         rectC = Rectangle(1, 2, 3, 4)
-        self.assertNotEqual(rectC.y, 0)
         self.assertEqual(rectC.y, 4)
 
-    def test_rectangle_init_wrong_param_1(self):
+    def test_rect_5_params(self):
+        rectD = Rectangle(1, 2, 3, 4, 5)
+        self.assertEqual(rectC.id, 5)
+
+    def test_rect_wrong_param_1(self):
         with self.assertRaises(TypeError, msg="width must be an integer"):
             Rectangle("W", 2)
 
-    def test_rectangle_init_wrong_param_2(self):
+    def test_rect_wrong_param_2(self):
         with self.assertRaises(TypeError, msg="height must be an integer"):
             Rectangle(1, "H")
 
-    def test_rectangle_init_wrong_param_3(self):
+    def test_rect_wrong_param_3(self):
         with self.assertRaises(TypeError, msg="x must be an integer"):
             Rectangle(1, 2, "X")
 
-    def test_rectangle_init_wrong_param_4(self):
+    def test_rect_wrong_param_4(self):
         with self.assertRaises(TypeError, msg="y must be an integer"):
             Rectangle(1, 2, 3, "Y")
+
+    def test_rect_neg_param_1(self):
+        with self.assertRaises(ValueError, msg="width must be > 0"):
+            Rectangle(-1, 2)
+
+    def test_rect_neg_param_2(self):
+        with self.assertRaises(ValueError, msg="height must be > 0"):
+            Rectangle(1, -2)
+
+    def test_rect_neg_param_3(self):
+        with self.assertRaises(ValueError, msg="x must be >= 0"):
+            Rectangle(1, 2, -3)
+
+    def test_rect_neg_param_4(self):
+        with self.assertRaises(ValueError, msg="y must be >= 0"):
+            Rectangle(1, 2, 3, -4)
+
+    def test_rect_zero_param_1(self):
+        with self.assertRaises(ValueError, msg="width must be > 0"):
+            Rectangle(0, 2)
+
+    def test_rect_zero_param_2(self):
+        with self.assertRaises(ValueError, msg="height must be > 0"):
+            Rectangle(1, 0)
+
+    def test_rect_area(self):
+        rect = Rectangle(3, 3)
+        self.assertIsInstance(rect.area(), int)
 
 if __name__== '__main__':
     unittest.main()
