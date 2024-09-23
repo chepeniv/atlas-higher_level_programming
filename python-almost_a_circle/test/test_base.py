@@ -48,10 +48,11 @@ class TestBaseClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
 
+    def setUp(self):
+        self.base = Base()
 
     def test_base_id(self):
-        base = Base()
-        self.assertEqual(base.id, 1)
+        self.assertEqual(self.base.id, 1)
 
 if __name__== '__main__':
     unittest.main()
