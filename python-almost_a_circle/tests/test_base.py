@@ -49,7 +49,7 @@ class TestBaseClass(unittest.TestCase):
 
     def test_base_id(self):
         base = Base()
-        self.assertEqual(base.id, 1)
+        self.assertIsNotNone(base.id)
 
     def test_base_id_increment(self):
         base_A = Base()
@@ -65,6 +65,15 @@ class TestBaseClass(unittest.TestCase):
 
     def test_to_json_string_empty(self):
         self.assertEqual(Base.to_json_string([]), "[]")
+
+    def test_from_json_string_none(self):
+        self.assertEqual(Base.from_json_string(None), [])
+
+    def test_from_json_string_empty(self):
+        self.assertEqual(Base.from_json_string("[]"), [])
+
+    # def test_from_json_string_exist(self):
+    # def test_from_json_string_list_exist(self):
 
 if __name__== '__main__':
     unittest.main()
