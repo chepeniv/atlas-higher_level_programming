@@ -2,6 +2,8 @@
 """ python test script for Base class
     execute test :
         python3 -m unittest test.test_models.test_base
+    or
+        python3 -m unittest test/test_models/test_base.py
 
     reference list of assert methods: 
 
@@ -48,7 +50,11 @@ class TestBaseClass(unittest.TestCase):
 
 
     def test_base_id(self):
-        self.assertIsNotNone(Base().id)
+        base = Base()
+        id_value = base.id
+        self.assertIsNotNone(id_value)
+        self.assertIs(type(id_value), int)
+        self.assertIsInstance(id_value, int)
 
 if __name__== '__main__':
     unittest.main()
