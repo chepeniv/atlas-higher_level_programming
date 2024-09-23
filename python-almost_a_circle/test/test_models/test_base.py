@@ -48,8 +48,7 @@ class TestBaseClass(unittest.TestCase):
 
 
     def test_base_id(self):
-        base = Base()
-        self.assertIsNotNone(base.id)
+        self.assertIsNotNone(Base().id)
 
 if __name__== '__main__':
     unittest.main()
