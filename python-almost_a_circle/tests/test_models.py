@@ -140,7 +140,7 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_rect_area(self):
         rect = Rectangle(3, 3)
-        self.assertIsInstance(rect.area(), int)
+        self.assertEqual(rect.area(), 9)
 
 if __name__== '__main__':
     unittest.main()
