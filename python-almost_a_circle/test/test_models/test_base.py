@@ -49,10 +49,9 @@ class TestBaseClass(unittest.TestCase):
     """
 
 
-    def test_base_id(self):
+    def testBaseId(self):
         base = Base()
-        id_value = base.id
-        self.assertIsNotNone(id_value)
+        self.assertIsNotNone(base.id)
         self.assertIs(type(id_value), int)
         self.assertIsInstance(id_value, int)
 
