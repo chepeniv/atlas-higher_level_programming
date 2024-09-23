@@ -38,8 +38,7 @@
 
 
 import unittest
-""" sys.path.append('../../models')
-"""
+""" sys.path.append('../../models') """
 from models.base import Base
 
 
@@ -47,11 +46,10 @@ class TestBaseClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
 
-    base = Base()
-    base_id = base.id
 
-    def test_base_id(self, base_id):
-        self.assertIsNotNone(base_id)
+    def test_base_id(self):
+        base = Base()
+        self.assertIsNotNone(base.id)
 
 if __name__== '__main__':
     unittest.main()
