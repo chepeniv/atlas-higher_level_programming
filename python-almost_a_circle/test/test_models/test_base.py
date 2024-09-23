@@ -40,7 +40,6 @@
 
 
 import unittest
-""" sys.path.append('../../models') """
 from models.base import Base
 
 
@@ -48,11 +47,9 @@ class TestBaseClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
 
-    def setUp(self):
-        self.base = Base()
-
     def test_base_id(self):
-        self.assertEqual(self.base.id, 1)
+        base = Base()
+        self.assertEqual(base.id, 1)
 
-    if __name__== '__main__':
-        unittest.main()
+if __name__== '__main__':
+    unittest.main()
