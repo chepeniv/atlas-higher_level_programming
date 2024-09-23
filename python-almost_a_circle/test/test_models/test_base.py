@@ -49,9 +49,9 @@ class TestBaseClass(unittest.TestCase):
     """
 
 
-    def testBaseId(self):
+    def test_base_id(self):
         base = Base()
-        self.assertIsNotNone(base.id)
+        self.assertEqual(base.id, 1)
 
 if __name__== '__main__':
     unittest.main()
