@@ -96,5 +96,21 @@ class TestRectangleClass(unittest.TestCase):
         self.assertNotEqual(rectC.y, 0)
         self.assertEqual(rectC.y, 4)
 
+    def test_rectangle_init_wrong_param_1(self):
+        with self.assertRaises(TypeError, msg="width must be an integer"):
+            Rectangle("W", 2)
+
+    def test_rectangle_init_wrong_param_2(self):
+        with self.assertRaises(TypeError, msg="height must be an integer"):
+            Rectangle(1, "H")
+
+    def test_rectangle_init_wrong_param_3(self):
+        with self.assertRaises(TypeError, msg="x must be an integer"):
+            Rectangle(1, 2, "X")
+
+    def test_rectangle_init_wrong_param_4(self):
+        with self.assertRaises(TypeError, msg="y must be an integer"):
+            Rectangle(1, 2, 3, "Y")
+
 if __name__== '__main__':
     unittest.main()
