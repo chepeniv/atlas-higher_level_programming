@@ -51,5 +51,14 @@ class TestBaseClass(unittest.TestCase):
         base = Base()
         self.assertEqual(base.id, 1)
 
+    def test_base_id_increment(self):
+        base_A = Base()
+        base_B = Base()
+        self.assertEqual(base_A.id + 1, base_B.id)
+
+    def test_base_id_assignment(self):
+        base = Base(89)
+        self.assertEqual(base.id, 89)
+
 if __name__== '__main__':
     unittest.main()
