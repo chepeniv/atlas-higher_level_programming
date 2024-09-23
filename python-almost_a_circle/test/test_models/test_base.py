@@ -54,5 +54,5 @@ class TestBaseClass(unittest.TestCase):
     def test_base_id(self):
         self.assertEqual(self.base.id, 1)
 
-if __name__== '__main__':
-    unittest.main()
+    if __name__== '__main__':
+        unittest.main()
