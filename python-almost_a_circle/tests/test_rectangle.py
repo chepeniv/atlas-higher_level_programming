@@ -36,22 +36,20 @@ class TestRectangleClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
 
-    def setUp(self):
-        self.rectA = Rectangle(1, 2)
-        self.rectB = Rectangle(1, 2, 3)
-        self.rectC = Rectangle(1, 2, 3, 4)
-
     def test_rectangle_init_2_params(self):
-        self.assertEqual(self.rectA.width, 1)
-        self.assertEqual(self.rectA.height, 2)
+        rectA = Rectangle(1, 2)
+        self.assertEqual(rectA.width, 1)
+        self.assertEqual(rectA.height, 2)
 
     def test_rectangle_init_3_params(self):
-        self.assertNotEqual(self.rectB.x, 0)
-        self.assertEqual(self.rectB.x, 3)
+        rectB = Rectangle(1, 2, 3)
+        self.assertNotEqual(rectB.x, 0)
+        self.assertEqual(rectB.x, 3)
 
     def test_rectangle_init_4_params(self):
-        self.assertNotEqual(self.rectC.y, 0)
-        self.assertEqual(self.rectC.y, 4)
+        rectC = Rectangle(1, 2, 3, 4)
+        self.assertNotEqual(rectC.y, 0)
+        self.assertEqual(rectC.y, 4)
 
 if __name__== '__main__':
     unittest.main()
