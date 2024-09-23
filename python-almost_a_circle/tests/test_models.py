@@ -96,7 +96,7 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_rect_5_params(self):
         rectD = Rectangle(1, 2, 3, 4, 5)
-        self.assertEqual(rectC.id, 5)
+        self.assertEqual(rectD.id, 5)
 
     def test_rect_wrong_param_1(self):
         with self.assertRaises(TypeError, msg="width must be an integer"):
