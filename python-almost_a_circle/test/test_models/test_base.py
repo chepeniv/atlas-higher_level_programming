@@ -47,9 +47,11 @@ class TestBaseClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
 
-    def test_base_id(self):
-        instance = Base()
-        self.assertIsNotNone(instance.id)
+    base = Base()
+    base_id = base.id
+
+    def test_base_id(self, base_id):
+        self.assertIsNotNone(base_id)
 
 if __name__== '__main__':
     unittest.main()
