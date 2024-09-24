@@ -272,23 +272,28 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_rect_save_to_file_none(self):
         """
-        self.assertFalse(os.path.isfile("Rectangle.json"))
         Rectangle.save_to_file(None)
         with open("Rectangle.json", 'r') as jfile:
             jdata = jfile.read()
         self.assertEqual(jdata, "[]")
         self.assertIsInstance(jfile, io.TextIOWrapper)
         """
+        self.assertFalse(os.path.isfile("Rectangle.json"))
         self.assertIsNone(Rectangle.save_to_file(None))
-        #self.assertTrue(os.path.isfile("Rectangle.json"))
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+        os.remove("Rectangle.json")
 
     def test_rect_save_to_file_empty(self):
+        self.assertFalse(os.path.isfile("Rectangle.json"))
         self.assertIsNone(Rectangle.save_to_file([]))
-        #self.assertTrue(os.path.isfile("Rectangle.json"))
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+        os.remove("Rectangle.json")
 
     def test_rect_save_to_file_one_object(self):
+        self.assertFalse(os.path.isfile("Rectangle.json"))
         self.assertIsNone(Rectangle.save_to_file([Rectangle(1, 2)]))
-        #self.assertTrue(os.path.isfile("Rectangle.json"))
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+        os.remove("Rectangle.json")
 
 if __name__== '__main__':
     unittest.main()
