@@ -344,8 +344,14 @@ class TestSquareClass(unittest.TestCase):
             Square(1, 2, -3)
 
     def test_square__str__(self):
-        sq = Square(3)
-        self.assertEqual(str(sq), "[Square] ({}) 0/0 - 3".format(sq.id))
+        sq = Square(4)
+        self.assertEqual(str(sq), "[Square] ({}) 0/0 - 4".format(sq.id))
+
+    def test_square_to_dict(self):
+        sq = Square(4)
+        self.assertEqual(
+                sq.to_dictionary(),
+                {'id': sq.id, 'size': 4, 'x': 0, 'y': 0})
 
 if __name__== '__main__':
     unittest.main()
