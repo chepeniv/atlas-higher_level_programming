@@ -353,5 +353,21 @@ class TestSquareClass(unittest.TestCase):
                 sq.to_dictionary(),
                 {'id': sq.id, 'size': 4, 'x': 0, 'y': 0})
 
+    def test_square_update_pos(self):
+        sq = Square(4)
+        self.assertIsNone(sq.update())
+
+        sq.update(89)
+        self.assertEqual(sq.id, 89)
+
+        sq.update(89, 1)
+        self.assertEqual(sq.size, 1)
+
+        sq.update(89, 1, 2)
+        self.assertEqual(sq.x, 2)
+
+        sq.update(89, 1, 2, 3)
+        self.assertEqual(sq.y, 3)
+
 if __name__== '__main__':
     unittest.main()
