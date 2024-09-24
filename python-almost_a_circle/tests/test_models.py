@@ -39,9 +39,10 @@
 """
 
 
-import unittest
+import sys, io, contextlib, unittest
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 
 
 class TestBaseClass(unittest.TestCase):
@@ -141,6 +142,18 @@ class TestRectangleClass(unittest.TestCase):
     def test_rect_area(self):
         rect = Rectangle(3, 3)
         self.assertEqual(rect.area(), 9)
+
+    def test_rect__str__(self):
+        rect = Rectangle(3, 3)
+        self.assertEqual(str(rect), "[Rectangle] ({}) 0/0 - 3/3".format(rect.id))
+
+    def test_rect_display(self):
+        rect = Rectangle(3, 3)
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            rect.display()
+        output = output.getvalue().strip()
+        self.assertEqual(output, "###\n###\n###")
 
 if __name__== '__main__':
     unittest.main()
