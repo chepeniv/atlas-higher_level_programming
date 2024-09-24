@@ -185,8 +185,42 @@ class TestRectangleClass(unittest.TestCase):
                 rect.to_dictionary(),
                 {'id': rect.id, 'width': 4, 'height': 4, 'x': 0, 'y': 0})
 
-    """ somehow all the .update() meta-test are passing in the intranet checker
-    """
+    def test_rect_update(self):
+        rect = Rectangle(4, 4)
+        self.assertIsNone(rect.update())
+
+    def test_rect_update_pos_1(self):
+        rect = Rectangle(4, 4)
+        rect.update(89)
+        self.assertEqual(rect.id, 89)
+
+    def test_rect_update_pos_2(self):
+        rect = Rectangle(4, 4)
+        rect.update(89, 1)
+        self.assertEqual(
+                rect.to_dictionary(),
+                {'id': 89, 'width': 1, 'height': 4, 'x': 0, 'y': 0})
+
+    def test_rect_update_pos_3(self):
+        rect = Rectangle(4, 4)
+        rect.update(89, 1, 2)
+        self.assertEqual(
+                rect.to_dictionary(),
+                {'id': 89, 'width': 1, 'height': 2, 'x': 0, 'y': 0})
+
+    def test_rect_update_pos_4(self):
+        rect = Rectangle(4, 4)
+        rect.update(89, 1, 2, 3)
+        self.assertEqual(
+                rect.to_dictionary(),
+                {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 0})
+
+    def test_rect_update_pos_5(self):
+        rect = Rectangle(4, 4)
+        rect.update(89, 1, 2, 3, 4)
+        self.assertEqual(
+                rect.to_dictionary(),
+                {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
 
 if __name__== '__main__':
     unittest.main()
