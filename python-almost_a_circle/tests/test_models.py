@@ -39,11 +39,13 @@
 """
 
 
-import sys, io, contextlib, unittest
+import sys, io, os, contextlib, unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 
+def setUpModule():
+    pass
 
 class TestBaseClass(unittest.TestCase):
     """ class containing testing functions for Base class
@@ -264,6 +266,8 @@ class TestRectangleClass(unittest.TestCase):
         with open("Rectangle.json", 'r') as jfile:
             jdata = jfile.read()
         self.assertEqual(jdata, "[]")
+        self.assertIsInstance(jfile, io.TextIOWrapper)
+        self.assertTrue(os.path.isfile("Rectangle.json"))
 
 
 if __name__== '__main__':
