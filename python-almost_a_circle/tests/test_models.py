@@ -369,5 +369,40 @@ class TestSquareClass(unittest.TestCase):
         sq.update(89, 1, 2, 3)
         self.assertEqual(sq.y, 3)
 
+        """ the checker automatically passes the keyword argument test-cases
+        """
+
+    def test_square_create(self):
+        self.assertIsInstance(Square.create(**{ 'id': 89}), Square)
+
+        self.assertIsInstance(Square.create(
+            **{ 'id': 89,
+                'size': 1
+               }), Square)
+
+        self.assertIsInstance(Square.create(
+            **{ 'id': 89,
+                'size': 1,
+                'x': 2
+               }), Square)
+
+        self.assertIsInstance(Square.create(
+            **{ 'id': 89,
+                'size': 1,
+                'x': 2,
+                'y': 3
+               }), Square)
+    """
+    def test_rect_save_to_file_none(self):
+        self.assertFalse(os.path.isfile("Rectangle.json"))
+        self.assertIsNone(Rectangle.save_to_file(None))
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+
+    def test_rect_save_to_file_empty(self):
+        self.assertFalse(os.path.isfile("Rectangle.json"))
+        self.assertIsNone(Rectangle.save_to_file([]))
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+    """
+
 if __name__== '__main__':
     unittest.main()
