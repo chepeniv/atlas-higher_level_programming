@@ -155,5 +155,34 @@ class TestRectangleClass(unittest.TestCase):
         output = output.getvalue().strip()
         self.assertEqual(output, "###\n###\n###")
 
+    def test_rect_display(self):
+        rect = Rectangle(3, 3)
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            rect.display()
+        output = output.getvalue().strip()
+        self.assertEqual(output, "###\n###\n###")
+
+    def test_rect_display_with_x(self):
+        rect = Rectangle(3, 3)
+        rect.update(x=4)
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            rect.display()
+        output = output.getvalue()
+        self.assertEqual(output, "    ###\n    ###\n    ###\n")
+
+    def test_rect_display_with_x_y(self):
+        rect = Rectangle(3, 3, 4, 4)
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            rect.display()
+        output = output.getvalue()
+        self.assertEqual(output, "\n\n\n\n    ###\n    ###\n    ###\n")
+
+    def test_rect_to_dict(self):
+        rect = Rectangle(4, 4)
+        self.assertIsNotNone(rect.to_dictionary())
+
 if __name__== '__main__':
     unittest.main()
