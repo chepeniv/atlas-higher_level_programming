@@ -403,5 +403,19 @@ class TestSquareClass(unittest.TestCase):
         self.assertIsNone(Square.save_to_file([]))
         self.assertTrue(os.path.isfile("Square.json"))
 
+    def test_square_save_to_file_one_object(self):
+        self.assertFalse(os.path.isfile("Square.json"))
+        self.assertIsNone(Square.save_to_file([Square(1, 2)]))
+        self.assertTrue(os.path.isfile("Square.json"))
+
+    def test_square_load_from_file_doesnt_exist(self):
+        self.assertFalse(os.path.isfile("Square.json"))
+        self.assertEqual(Square.load_from_file(), [])
+
+    def test_square_load_from_file_exist(self):
+        Square.save_to_file([Square(1, 2)])
+        self.assertTrue(os.path.isfile("Square.json"))
+        self.assertNotEqual(Square.load_from_file(), [])
+
 if __name__== '__main__':
     unittest.main()
