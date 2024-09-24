@@ -82,7 +82,6 @@ class TestBaseClass(unittest.TestCase):
     # def test_from_json_string_exist(self):
     # def test_from_json_string_list_exist(self):
 
-
 class TestRectangleClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
@@ -298,6 +297,51 @@ class TestRectangleClass(unittest.TestCase):
         Rectangle.save_to_file([Rectangle(1, 2)])
         self.assertTrue(os.path.isfile("Rectangle.json"))
         self.assertNotEqual(Rectangle.load_from_file(), [])
+
+class TestSquareClass(unittest.TestCase):
+    """ class containing testing functions for Base class
+    """
+
+    def tearDown(self):
+        if os.path.isfile("Square.json"):
+            os.remove("Square.json")
+
+    def test_rect_params(self):
+        square = Square(1)
+        self.assertEqual(square.size, 1)
+
+        square = Square(1, 2)
+        self.assertEqual(square.x, 2)
+
+        square = Square(1, 2, 3)
+        self.assertEqual(square.y, 3)
+
+        square = Square(1, 2, 3, 4)
+        self.assertEqual(square.id, 4)
+
+    def test_rect_wrong_params(self):
+        with self.assertRaises(TypeError, msg="width must be an integer"):
+            Square("s")
+
+        with self.assertRaises(TypeError, msg="x must be an integer"):
+            Square(1, "x")
+
+        with self.assertRaises(TypeError, msg="y must be an integer"):
+            Square(1, 2, "y")
+
+    def test_rect_zero_params(self):
+        with self.assertRaises(ValueError, msg="width must be > 0"):
+            Square(0)
+
+    def test_rect_neg_params(self):
+        with self.assertRaises(ValueError, msg="width must be > 0"):
+            Square(-1)
+
+        with self.assertRaises(ValueError, msg="x must be >= 0"):
+            Square(1, -2)
+
+        with self.assertRaises(ValueError, msg="y must be >= 0"):
+            Square(1, 2, -3)
 
 if __name__== '__main__':
     unittest.main()
