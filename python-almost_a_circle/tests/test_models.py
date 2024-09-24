@@ -47,6 +47,13 @@ from models.square import Square
 def setUpModule():
     pass
 
+def tearDownModule():
+    if os.path.isfile("Rectangle.json"):
+        os.remove("Rectangle.json")
+    if os.path.isfile("Square.json"):
+        os.remove("Square.json")
+
+
 class TestBaseClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
@@ -262,6 +269,7 @@ class TestRectangleClass(unittest.TestCase):
                }), Rectangle)
 
     def test_rect_save_to_file(self):
+        self.assertFalse(os.path.isfile("Rectangle.json"))
         Rectangle.save_to_file(None)
         with open("Rectangle.json", 'r') as jfile:
             jdata = jfile.read()
@@ -269,7 +277,6 @@ class TestRectangleClass(unittest.TestCase):
         self.assertIsInstance(jfile, io.TextIOWrapper)
         self.assertTrue(os.path.isfile("Rectangle.json"))
         self.assertIsNone(Rectangle.save_to_file(None))
-
 
 if __name__== '__main__':
     unittest.main()
