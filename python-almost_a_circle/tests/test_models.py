@@ -222,5 +222,38 @@ class TestRectangleClass(unittest.TestCase):
                 rect.to_dictionary(),
                 {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
 
+    def test_rect_create_id(self):
+        self.assertIsInstance(Rectangle.create(**{ 'id': 89}), Rectangle)
+
+    def test_rect_create_id_width(self):
+        self.assertIsInstance(Rectangle.create(
+            **{ 'id': 89,
+                'width': 1
+               }), Rectangle)
+
+    def test_rect_create_id_width_height(self):
+        self.assertIsInstance(Rectangle.create(
+            **{ 'id': 89,
+                'width': 1,
+                'height': 2
+               }), Rectangle)
+
+    def test_rect_create_id_width_height_x(self):
+        self.assertIsInstance(Rectangle.create(
+            **{ 'id': 89,
+                'width': 1,
+                'height': 2,
+                'x': 3
+               }), Rectangle)
+
+    def test_rect_create_id_width_height_x_y(self):
+        self.assertIsInstance(Rectangle.create(
+            **{ 'id': 89,
+                'width': 1,
+                'height': 2,
+                'x': 3,
+                'y': 4
+               }), Rectangle)
+
 if __name__== '__main__':
     unittest.main()
