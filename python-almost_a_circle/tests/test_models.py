@@ -306,7 +306,7 @@ class TestSquareClass(unittest.TestCase):
         if os.path.isfile("Square.json"):
             os.remove("Square.json")
 
-    def test_rect_params(self):
+    def test_square_params(self):
         square = Square(1)
         self.assertEqual(square.size, 1)
 
@@ -319,7 +319,7 @@ class TestSquareClass(unittest.TestCase):
         square = Square(1, 2, 3, 4)
         self.assertEqual(square.id, 4)
 
-    def test_rect_wrong_params(self):
+    def test_square_wrong_params(self):
         with self.assertRaises(TypeError, msg="width must be an integer"):
             Square("s")
 
@@ -329,11 +329,11 @@ class TestSquareClass(unittest.TestCase):
         with self.assertRaises(TypeError, msg="y must be an integer"):
             Square(1, 2, "y")
 
-    def test_rect_zero_params(self):
+    def test_square_zero_params(self):
         with self.assertRaises(ValueError, msg="width must be > 0"):
             Square(0)
 
-    def test_rect_neg_params(self):
+    def test_square_neg_params(self):
         with self.assertRaises(ValueError, msg="width must be > 0"):
             Square(-1)
 
@@ -342,6 +342,10 @@ class TestSquareClass(unittest.TestCase):
 
         with self.assertRaises(ValueError, msg="y must be >= 0"):
             Square(1, 2, -3)
+
+    def test_square__str__(self):
+        sq = Square(3)
+        self.assertEqual(str(sq), "[Square] ({}) 0/0 - 3".format(sq.id))
 
 if __name__== '__main__':
     unittest.main()
