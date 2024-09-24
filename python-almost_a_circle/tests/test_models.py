@@ -268,6 +268,7 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(jdata, "[]")
         self.assertIsInstance(jfile, io.TextIOWrapper)
         self.assertTrue(os.path.isfile("Rectangle.json"))
+        self.assertIsNone(Rectangle.save_to_file(None))
 
 
 if __name__== '__main__':
