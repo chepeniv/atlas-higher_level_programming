@@ -294,5 +294,10 @@ class TestRectangleClass(unittest.TestCase):
         self.assertFalse(os.path.isfile("Rectangle.json"))
         self.assertEqual(Rectangle.load_from_file(), [])
 
+    def test_rect_load_from_file_exist(self):
+        Rectangle.save_to_file([Rectangle(1, 2)])
+        self.assertTrue(os.path.isfile("Rectangle.json"))
+        self.assertNotEqual(Rectangle.load_from_file(), [])
+
 if __name__== '__main__':
     unittest.main()
