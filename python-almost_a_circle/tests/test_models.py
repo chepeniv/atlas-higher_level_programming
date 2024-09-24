@@ -392,17 +392,16 @@ class TestSquareClass(unittest.TestCase):
                 'x': 2,
                 'y': 3
                }), Square)
-    """
-    def test_rect_save_to_file_none(self):
-        self.assertFalse(os.path.isfile("Rectangle.json"))
-        self.assertIsNone(Rectangle.save_to_file(None))
-        self.assertTrue(os.path.isfile("Rectangle.json"))
 
-    def test_rect_save_to_file_empty(self):
-        self.assertFalse(os.path.isfile("Rectangle.json"))
-        self.assertIsNone(Rectangle.save_to_file([]))
-        self.assertTrue(os.path.isfile("Rectangle.json"))
-    """
+    def test_square_save_to_file_none(self):
+        self.assertFalse(os.path.isfile("Square.json"))
+        self.assertIsNone(Square.save_to_file(None))
+        self.assertTrue(os.path.isfile("Square.json"))
+
+    def test_square_save_to_file_empty(self):
+        self.assertFalse(os.path.isfile("Square.json"))
+        self.assertIsNone(Square.save_to_file([]))
+        self.assertTrue(os.path.isfile("Square.json"))
 
 if __name__== '__main__':
     unittest.main()
