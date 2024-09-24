@@ -39,16 +39,10 @@
 """
 
 
-import sys, io, os, contextlib, unittest
+import io, os, contextlib, unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
-
-def setUpModule():
-    pass
-
-def tearDownModule():
-    pass
 
 class TestBaseClass(unittest.TestCase):
     """ class containing testing functions for Base class
@@ -67,83 +61,64 @@ class TestBaseClass(unittest.TestCase):
         base = Base(89)
         self.assertEqual(base.id, 89)
 
-    def test_to_json_string_none(self):
+    def test_to_json_string(self):
         self.assertEqual(Base.to_json_string(None), "[]")
-
-    def test_to_json_string_empty(self):
         self.assertEqual(Base.to_json_string([]), "[]")
-
-    def test_from_json_string_none(self):
         self.assertEqual(Base.from_json_string(None), [])
-
-    def test_from_json_string_empty(self):
         self.assertEqual(Base.from_json_string("[]"), [])
 
-    # def test_from_json_string_exist(self):
-    # def test_from_json_string_list_exist(self):
-
 class TestRectangleClass(unittest.TestCase):
-    """ class containing testing functions for Base class
+    """ class containing testing functions for Rectangle class
     """
 
     def tearDown(self):
         if os.path.isfile("Rectangle.json"):
             os.remove("Rectangle.json")
 
-    def test_rect_2_params(self):
+    def test_rect__init__(self):
         rectA = Rectangle(1, 2)
         self.assertEqual(rectA.width, 1)
         self.assertEqual(rectA.height, 2)
 
-    def test_rect_3_params(self):
         rectB = Rectangle(1, 2, 3)
         self.assertEqual(rectB.x, 3)
 
-    def test_rect_4_params(self):
         rectC = Rectangle(1, 2, 3, 4)
         self.assertEqual(rectC.y, 4)
 
-    def test_rect_5_params(self):
         rectD = Rectangle(1, 2, 3, 4, 5)
         self.assertEqual(rectD.id, 5)
 
-    def test_rect_wrong_param_1(self):
+    def test_rect_wrong_param(self):
         with self.assertRaises(TypeError, msg="width must be an integer"):
             Rectangle("W", 2)
 
-    def test_rect_wrong_param_2(self):
         with self.assertRaises(TypeError, msg="height must be an integer"):
             Rectangle(1, "H")
 
-    def test_rect_wrong_param_3(self):
         with self.assertRaises(TypeError, msg="x must be an integer"):
             Rectangle(1, 2, "X")
 
-    def test_rect_wrong_param_4(self):
         with self.assertRaises(TypeError, msg="y must be an integer"):
             Rectangle(1, 2, 3, "Y")
 
-    def test_rect_neg_param_1(self):
+    def test_rect_neg_params(self):
         with self.assertRaises(ValueError, msg="width must be > 0"):
             Rectangle(-1, 2)
 
-    def test_rect_neg_param_2(self):
         with self.assertRaises(ValueError, msg="height must be > 0"):
             Rectangle(1, -2)
 
-    def test_rect_neg_param_3(self):
         with self.assertRaises(ValueError, msg="x must be >= 0"):
             Rectangle(1, 2, -3)
 
-    def test_rect_neg_param_4(self):
         with self.assertRaises(ValueError, msg="y must be >= 0"):
             Rectangle(1, 2, 3, -4)
 
-    def test_rect_zero_param_1(self):
+    def test_rect_zero_params(self):
         with self.assertRaises(ValueError, msg="width must be > 0"):
             Rectangle(0, 2)
 
-    def test_rect_zero_param_2(self):
         with self.assertRaises(ValueError, msg="height must be > 0"):
             Rectangle(1, 0)
 
@@ -154,14 +129,6 @@ class TestRectangleClass(unittest.TestCase):
     def test_rect__str__(self):
         rect = Rectangle(3, 3)
         self.assertEqual(str(rect), "[Rectangle] ({}) 0/0 - 3/3".format(rect.id))
-
-    def test_rect_display(self):
-        rect = Rectangle(3, 3)
-        output = io.StringIO()
-        with contextlib.redirect_stdout(output):
-            rect.display()
-        output = output.getvalue().strip()
-        self.assertEqual(output, "###\n###\n###")
 
     def test_rect_display(self):
         rect = Rectangle(3, 3)
@@ -197,60 +164,47 @@ class TestRectangleClass(unittest.TestCase):
         rect = Rectangle(4, 4)
         self.assertIsNone(rect.update())
 
-    def test_rect_update_pos_1(self):
-        rect = Rectangle(4, 4)
         rect.update(89)
         self.assertEqual(rect.id, 89)
 
-    def test_rect_update_pos_2(self):
-        rect = Rectangle(4, 4)
         rect.update(89, 1)
         self.assertEqual(
                 rect.to_dictionary(),
                 {'id': 89, 'width': 1, 'height': 4, 'x': 0, 'y': 0})
 
-    def test_rect_update_pos_3(self):
-        rect = Rectangle(4, 4)
         rect.update(89, 1, 2)
         self.assertEqual(
                 rect.to_dictionary(),
                 {'id': 89, 'width': 1, 'height': 2, 'x': 0, 'y': 0})
 
-    def test_rect_update_pos_4(self):
-        rect = Rectangle(4, 4)
         rect.update(89, 1, 2, 3)
         self.assertEqual(
                 rect.to_dictionary(),
                 {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 0})
 
-    def test_rect_update_pos_5(self):
-        rect = Rectangle(4, 4)
         rect.update(89, 1, 2, 3, 4)
         self.assertEqual(
                 rect.to_dictionary(),
                 {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
 
-    """i omited assert-testing on .update() with kwargs
-    since the checker passed those
-    """
+        """i omited assert-testing on .update() with kwargs
+        since the checker passed those
+        """
 
-    def test_rect_create_id(self):
+    def test_rect_create(self):
         self.assertIsInstance(Rectangle.create(**{ 'id': 89}), Rectangle)
 
-    def test_rect_create_id_width(self):
         self.assertIsInstance(Rectangle.create(
             **{ 'id': 89,
                 'width': 1
                }), Rectangle)
 
-    def test_rect_create_id_width_height(self):
         self.assertIsInstance(Rectangle.create(
             **{ 'id': 89,
                 'width': 1,
                 'height': 2
                }), Rectangle)
 
-    def test_rect_create_id_width_height_x(self):
         self.assertIsInstance(Rectangle.create(
             **{ 'id': 89,
                 'width': 1,
@@ -258,7 +212,6 @@ class TestRectangleClass(unittest.TestCase):
                 'x': 3
                }), Rectangle)
 
-    def test_rect_create_id_width_height_x_y(self):
         self.assertIsInstance(Rectangle.create(
             **{ 'id': 89,
                 'width': 1,
@@ -299,7 +252,7 @@ class TestRectangleClass(unittest.TestCase):
         self.assertNotEqual(Rectangle.load_from_file(), [])
 
 class TestSquareClass(unittest.TestCase):
-    """ class containing testing functions for Base class
+    """ class containing testing functions for Square class
     """
 
     def tearDown(self):
