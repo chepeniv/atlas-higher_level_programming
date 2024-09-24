@@ -182,7 +182,9 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_rect_to_dict(self):
         rect = Rectangle(4, 4)
-        self.assertIsNotNone(rect.to_dictionary())
+        self.assertEqual(
+                rect.to_dictionary(),
+                {'id': rect.id, 'width': 4, 'height': 4, 'x': 0, 'y': 0})
 
 if __name__== '__main__':
     unittest.main()
