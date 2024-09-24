@@ -54,12 +54,6 @@ class TestBaseClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
 
-    def tearDown(self):
-        if os.path.isfile("Rectangle.json"):
-            os.remove("Rectangle.json")
-        if os.path.isfile("Square.json"):
-            os.remove("Square.json")
-
     def test_base_id(self):
         base = Base()
         self.assertIsNotNone(base.id)
@@ -92,6 +86,10 @@ class TestBaseClass(unittest.TestCase):
 class TestRectangleClass(unittest.TestCase):
     """ class containing testing functions for Base class
     """
+
+    def tearDown(self):
+        if os.path.isfile("Rectangle.json"):
+            os.remove("Rectangle.json")
 
     def test_rect_2_params(self):
         rectA = Rectangle(1, 2)
@@ -281,19 +279,20 @@ class TestRectangleClass(unittest.TestCase):
         self.assertFalse(os.path.isfile("Rectangle.json"))
         self.assertIsNone(Rectangle.save_to_file(None))
         self.assertTrue(os.path.isfile("Rectangle.json"))
-        os.remove("Rectangle.json")
 
     def test_rect_save_to_file_empty(self):
         self.assertFalse(os.path.isfile("Rectangle.json"))
         self.assertIsNone(Rectangle.save_to_file([]))
         self.assertTrue(os.path.isfile("Rectangle.json"))
-        os.remove("Rectangle.json")
 
     def test_rect_save_to_file_one_object(self):
         self.assertFalse(os.path.isfile("Rectangle.json"))
         self.assertIsNone(Rectangle.save_to_file([Rectangle(1, 2)]))
         self.assertTrue(os.path.isfile("Rectangle.json"))
-        os.remove("Rectangle.json")
+
+    def test_rect_load_from_file_doesnt_exist(self):
+        self.assertFalse(os.path.isfile("Rectangle.json"))
+        self.assertEqual(Rectangle.load_from_file(), [])
 
 if __name__== '__main__':
     unittest.main()
