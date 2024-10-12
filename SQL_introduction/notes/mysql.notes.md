@@ -1,5 +1,11 @@
 # mysql.notes
 
+### man pages
+location : `/usr/local/share/man/`
+
+run : `man mysql`
+
+
 ## basic commands
 comments:
 ```sql
