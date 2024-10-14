@@ -6,5 +6,6 @@ CREATE USER IF NOT EXISTS 'user_0d_2'@'localhost' IDENTIFIED BY 'user_0d_2_pwd';
 -- create new database
 CREATE DATABASE IF NOT EXISTS hbtn_0d_2;
 
--- grant specific permissions
+-- specify new user permissions
+GRANT USAGE ON *.* TO 'user_0d_2'@'localhost';
 GRANT SELECT ON hbt_0d_2.* TO 'user_0d_2'@'localhost';
