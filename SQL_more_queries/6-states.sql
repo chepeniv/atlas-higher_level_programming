@@ -3,6 +3,7 @@
 -- create new database
 CREATE DATABASE IF NOT EXISTS hbtn_0d_usa;
 
+-- alternatively, i could've name-spaced `states` when creating the table: `hbtn_0d_usa.states`
 USE hbtn_0d_usa;
 
 -- create table
