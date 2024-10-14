@@ -2,5 +2,6 @@
 
 -- list matching records
 SELECT cities.id, cities.name, states.name FROM cities 
-LEFT JOIN states ON cities.state_id = states.id
+-- both LEFT JOIN and INNER JOIN seem to work the same here
+JOIN states ON cities.state_id = states.id
 ORDER BY cities.id; 
