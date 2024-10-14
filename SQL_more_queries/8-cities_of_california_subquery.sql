@@ -2,5 +2,7 @@
 
 -- list matching records
 SELECT id, name FROM cities 
-WHERE states.name = 'California' AND states.id = cities.state_id 
-ORDER BY cities.id; 
+WHERE state_id IN
+	(SELECT id FROM states 
+		WHERE states.name = 'California')
+ORDER BY id; 
