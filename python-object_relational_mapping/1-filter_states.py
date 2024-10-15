@@ -15,7 +15,7 @@ def list_N_states(params):
 
     db_cursor = usa_db.cursor()
     db_cursor.execute("SELECT * FROM states\
-            WHERE states.name LIKE 'n%'\
+            WHERE LOWER(name) LIKE 'n%'\
             ORDER BY id")
 
     for state in db_cursor.fetchall():
