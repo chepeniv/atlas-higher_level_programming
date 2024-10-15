@@ -13,5 +13,6 @@ def list_all_states(params):
     for state in usa_states:
         print("{}".format(state))
 
-params = sys.argv
-list_all_states(params)
+if __name__ == "__main__":
+    params = sys.argv
+    list_all_states(params)
