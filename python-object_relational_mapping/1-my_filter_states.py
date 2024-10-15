@@ -14,13 +14,10 @@ def list_matching_states(params):
             database=params[3])
 
     db_cursor = usa_db.cursor()
-    db_cursor.execute("SELECT * FROM states WHERE states.name = %s", (params[4],))
+    db_cursor.execute("SELECT * FROM states WHERE states.name = %s ORDER BY id", (params[4],))
 
     for state in db_cursor.fetchall():
         print("{}".format(state))
-    
-    db_cursor.close()
-    usa_db.close()
 
 
 if __name__ == "__main__":
