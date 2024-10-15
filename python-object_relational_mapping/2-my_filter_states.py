@@ -15,7 +15,7 @@ def list_matching_states(params):
 
     db_cursor = usa_db.cursor()
     db_cursor.execute(
-            "SELECT * FROM states WHERE states.name = %s ORDER BY id", 
+            "SELECT * FROM states WHERE states.name = %s ORDER BY id",
             (params[4],))
 
     for state in db_cursor.fetchall():
