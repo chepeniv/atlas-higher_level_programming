@@ -30,9 +30,8 @@ def list_matching_states(params):
         print("{}".format(city), end="")
         if i != cities_count - 1:
             print(", ", end="")
-        else:
-            print("")
         i += 1
+    print("")
 
 
 if __name__ == "__main__":
