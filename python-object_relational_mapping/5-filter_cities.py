@@ -24,7 +24,7 @@ def list_matching_states(params):
 
     cities = db_cursor.fetchall()
     cities_count = len(cities)
-    i = 0 
+    i = 0
     while i < cities_count:
         city = cities[i][0]
         print("{}".format(city), end="")
