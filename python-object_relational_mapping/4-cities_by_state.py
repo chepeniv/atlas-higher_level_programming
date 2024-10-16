@@ -15,16 +15,14 @@ def list_matching_states(params):
 
     db_cursor = usa_db.cursor()
 
-    first_word = params[4].split()
-    first_word = first_word[0]
     db_cursor.execute(
-            "SELECT * FROM states\
-            WHERE states.name = BINARY %s\
-            ORDER BY id",
-            (first_word,))
+            "SELECT cities.id, cities.name, states.name\
+            FROM cities LEFT JOIN states\
+            ON cities.state_id = states.id\
+            ORDER BY cities.id")
 
-    for state in db_cursor.fetchall():
-        print("{}".format(state))
+    for city in db_cursor.fetchall():
+        print("{}".format(city))
 
 
 if __name__ == "__main__":
