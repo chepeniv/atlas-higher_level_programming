@@ -31,7 +31,7 @@ def query_a_named(argument_list):
 
     a_name_states = current_session.query(State).filter(State.name.like('%a%'))
 
-    for state in a_name_states
+    for state in a_name_states:
         print("{}: {}".format(state.id, state.name))
 
 
