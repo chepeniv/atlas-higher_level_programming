@@ -30,7 +30,12 @@ def query_state_name(argument_list):
     Session = sessionmaker(db_engine)
     current_session = Session()
 
-    found_state = current_session.query(State).filter(State.name == statename).one()
+    found_state = (
+            current_session
+            .query(State)
+            .filter(State.name == statename)
+            .one_or_none()
+            )
 
     if found_state is not None:
         print("{}".format(found_state.id))
