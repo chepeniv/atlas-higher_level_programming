@@ -33,6 +33,21 @@ if __name__ == "__main__":
     Base.metadata.create_all(bind=db_engine)
     Session = sessionmaker(bind=db_engine)
     current_session = Session()
+
+    s1 = State(1, "California")
+    s2 = State(2, "Arizona")
+    s3 = State(3, "Texas")
+    s4 = State(4, "New York")
+    s5 = State(5, "Nevada")
+
+    current_session.add(s1)
+    current_session.add(s2)
+    current_session.add(s3)
+    current_session.add(s4)
+    current_session.add(s5)
+
+    current_session.commit()
+    
     query_all_states = current_session.query(State)
     for state in query_all_states:
         print(state)
