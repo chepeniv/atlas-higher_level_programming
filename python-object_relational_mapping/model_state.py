@@ -13,8 +13,7 @@ class State(Base):
     """ definition of class that links to mysql table """ 
     __tablename__ = 'states'
 
-    identity = Column(
-            "id",
+    id = Column(
             Integer,
             primary_key=True,
             autoincrement=True,
@@ -22,10 +21,10 @@ class State(Base):
 
     name = Column(String(128), nullable=False)
     
+    '''
     def __init__(self, identity, name):
         self.identity = identity
         self.name = name
-    '''
     def __str__(self):
         return f"{self.identity}: {self.name}"
     '''
