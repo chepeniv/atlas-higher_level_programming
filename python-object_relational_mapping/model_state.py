@@ -13,7 +13,7 @@ class State(Base):
 
     identity = Column(
             "id",
-            Integer(11),
+            Integer,
             primary_key=True,
             autoincrement=True,
             unique=True,
