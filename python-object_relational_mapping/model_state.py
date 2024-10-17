@@ -25,5 +25,5 @@ class State(Base):
         self.identity = identity
         self.name = name
 
-    def __repr__(self):
+    def __str__(self):
         return f"{self.identity}: {self.name}"
