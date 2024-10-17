@@ -29,10 +29,12 @@ def query_first_state(argument_list):
     Session = sessionmaker(db_engine)
     current_session = Session()
 
-    all_states = current_session.query(State).filter(State.id == 1)
+    all_states = current_session.query(State).first()
 
-    for state in all_states:
+    if all_states is not None:
         print("{}: {}".format(state.id, state.name))
+    else:
+        print("")
 
 
 if __name__ == "__main__":
