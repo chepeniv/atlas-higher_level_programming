@@ -3,11 +3,9 @@
 """ 
 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from model_states import State, Base
 
-Base = declarative_base()
-
-class State(Base):
+def query(params)
     """ definition of class that links to mysql table """ 
     __tablename__ = 'states'
     identity = Column(
@@ -18,3 +16,6 @@ class State(Base):
             unique=True,
             nullable=False)
     name = Column(String(128), nullable=False)
+
+if __name__ == "__main__":
+    query(sys.argv)
