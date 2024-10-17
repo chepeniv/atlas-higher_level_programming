@@ -28,7 +28,6 @@ class State(Base):
     def __str__(self):
         return f"{self.identity}: {self.name}"
 
-db_engine = create_engine("mysql://root:root@localhost:3306/hbtn_0e_6_usa")
-Base.metadata.create_all(bind=db_engine)
-Session = sessionmaker(bind=db_engine)
-current_session = Session()
+if __name__ == "__main__":
+    db_engine = create_engine("mysql://root:root@localhost:3306/hbtn_0e_6_usa")
+    Base.metadata.create_all(bind=db_engine)
