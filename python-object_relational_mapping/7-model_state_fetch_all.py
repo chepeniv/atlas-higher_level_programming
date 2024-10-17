@@ -4,8 +4,7 @@ connect to database and query it
 """
 
 from model_state import Base, State
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import sessionmaker
+from sqlalchemy import create_engine, sessionmaker
 import sys
 
 
