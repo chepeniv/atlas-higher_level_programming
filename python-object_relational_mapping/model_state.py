@@ -32,8 +32,9 @@ class State(Base):
 
 
 if __name__ == "__main__":
-    # db_engine = create_engine("mysql://root:root@localhost:3306/hbtn_0e_6_usa")
-
+    """
+    db_engine = create_engine("mysql://root:root@localhost:3306/hbtn_0e_6_usa")
+    """
     db_engine = create_engine(
             'mysql+mysqldb://{}:{}@localhost/{}'.format(
                 sys.argv[1],
@@ -41,4 +42,4 @@ if __name__ == "__main__":
                 sys.argv[3]),
             pool_pre_ping=True)
 
-    Base.metadata.create_all(bind=db_engine)
+    Base.metadata.create_all(db_engine)
