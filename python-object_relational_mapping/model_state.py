@@ -10,6 +10,7 @@ Base = declarative_base()
 class State(Base):
     """ definition of class that links to mysql table """ 
     __tablename__ = 'states'
+
     identity = Column(
             "id",
             Integer(11),
@@ -17,4 +18,12 @@ class State(Base):
             autoincrement=True,
             unique=True,
             nullable=False)
+
     name = Column(String(128), nullable=False)
+
+    def __init__(self, identity, name):
+        self.identity = identity
+        self.name = name
+
+    def __repr__(self):
+        return f"{self.id}: {self.name}"
