@@ -2,8 +2,8 @@
 """ module setting up a Base class and Derived class for mysql
 """ 
 
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
 
@@ -27,3 +27,8 @@ class State(Base):
 
     def __str__(self):
         return f"{self.identity}: {self.name}"
+
+db_engine = create_engine("mysql://root:root@localhost:3306/hbtn_0e_6_usa")
+Base.metadata.create_all(bind=db_engine)
+Session = sessionmaker(bind=db_engine)
+current_session = Session()
