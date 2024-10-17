@@ -35,7 +35,7 @@ def query_state_name(argument_list):
     if found_state is not None:
         print("{}".format(found_state.id))
     else:
-        print("Not Found")
+        print("Not found")
 
 
 if __name__ == "__main__":
