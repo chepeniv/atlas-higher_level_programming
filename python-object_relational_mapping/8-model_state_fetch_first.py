@@ -34,7 +34,7 @@ def query_first_state(argument_list):
     if first_state is not None:
         print("{}: {}".format(first_state.id, first_state.name))
     else:
-        print("")
+        print("Nothing")
 
 
 if __name__ == "__main__":
