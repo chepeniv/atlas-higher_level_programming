@@ -4,6 +4,8 @@
 
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
+import sys
+
 
 Base = declarative_base()
 
@@ -16,7 +18,6 @@ class State(Base):
             Integer,
             primary_key=True,
             autoincrement=True,
-            unique=True,
             nullable=False)
 
     name = Column(String(128), nullable=False)
@@ -28,6 +29,7 @@ class State(Base):
     def __str__(self):
         return f"{self.identity}: {self.name}"
     '''
+
 
 if __name__ == "__main__":
     # db_engine = create_engine("mysql://root:root@localhost:3306/hbtn_0e_6_usa")
