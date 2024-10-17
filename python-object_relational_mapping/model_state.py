@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ module setting up a Base class and Derived class for mysql
-""" 
+"""
 
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
@@ -9,8 +9,9 @@ import sys
 
 Base = declarative_base()
 
+
 class State(Base):
-    """ definition of class that links to mysql table """ 
+    """ definition of class that links to mysql table """
     __tablename__ = 'states'
 
     id = Column(
@@ -20,7 +21,7 @@ class State(Base):
             nullable=False)
 
     name = Column(String(128), nullable=False)
-    
+
     '''
     def __init__(self, identity, name):
         self.identity = identity
