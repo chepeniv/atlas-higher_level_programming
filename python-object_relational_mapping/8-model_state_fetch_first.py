@@ -29,7 +29,7 @@ def query_first_state(argument_list):
     Session = sessionmaker(db_engine)
     current_session = Session()
 
-    first_state = current_session.query(State).one_or_none(State.id == 1)
+    first_state = current_session.query(State).first()
 
     if first_state is not None:
         print("{}: {}".format(first_state.id, first_state.name))
