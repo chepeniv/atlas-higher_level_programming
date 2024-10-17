@@ -2,6 +2,7 @@
 
 # before running this create the database people_things from within mysql
 # run using: sudo python3 youtube-neuralnine-sqlalchemy.notes.py
+# this is re-written to be compatible with the 1.4.x version of sqlalchemy
 
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, CHAR
 from sqlalchemy.orm import declarative_base, sessionmaker
@@ -55,9 +56,14 @@ db_url = URL.create(
         host="localhost",
         database="people_things")
 
+# activate preexisting database
 db_engine = create_engine(db_url, echo=True)
+# connect and sync python to database 
 Base.metadata.create_all(bind=db_engine)
+# create session class that's linked to database
 Session = sessionmaker(bind=db_engine)
+# create interactive session instance
+# any numxber of these may be created
 current_session = Session()
 
 p1 = Person(1, "Mike", "Smith", "m", 35)
