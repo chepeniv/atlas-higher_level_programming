@@ -3,3 +3,4 @@ __pycache__
 12-newtask.py
 *.json
 node_modules
+*.test.js
