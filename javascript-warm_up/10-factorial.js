@@ -7,10 +7,14 @@ function factorial (n) {
   return n * factorial(n - 1);
 }
 
-let n = process.argv[2];
-n = parseInt(n);
-if (isNaN(n)) {
-  n = 1;
+function factorialMain () {
+  let n = process.argv[2];
+  n = parseInt(n);
+  if (isNaN(n)) {
+    n = 1;
+  }
+  n = factorial(n);
+  console.log(n);
 }
-n = factorial(n);
-console.log(n);
+
+factorialMain();
