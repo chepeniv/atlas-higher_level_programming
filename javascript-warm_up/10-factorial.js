@@ -9,7 +9,8 @@ function factorial (n) {
 
 let n = process.argv[2];
 n = parseInt(n);
-if (!isNaN(n)) {
-  n = factorial(n);
-  console.log(n);
+if (isNaN(n)) {
+  n = 1;
 }
+n = factorial(n);
+console.log(n);
