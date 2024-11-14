@@ -2,7 +2,7 @@
 
 let size = process.argv[2];
 const x = 'X';
-let message = 'Missing number of occurrances';
+let message = 'Missing size';
 
 size = parseInt(size);
 if (isNaN(size)) {
