@@ -4,3 +4,4 @@ __pycache__
 *.json
 node_modules
 *.test.js
+*.test.*
