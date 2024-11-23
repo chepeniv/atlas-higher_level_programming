@@ -1,4 +1,5 @@
 #!/usr/bin/node
+/* global $ */
 
 // update the color of <header> content to #ff0000
 // use the jquery api

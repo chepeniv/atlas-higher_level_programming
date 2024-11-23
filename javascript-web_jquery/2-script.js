@@ -1,4 +1,5 @@
 #!/usr/bin/node
+/* global $ */
 
 // update the color of <header> content to #ff0000 when
 // div#red_header is clicked

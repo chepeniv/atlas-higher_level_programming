@@ -1,5 +1,5 @@
 #!/usr/bin/node
-
+/* global $ */
 // fetch from https://hellosalut.stefanbohacek.dev/?lang=fr
 // extract hello and insert its value into div#hello
 // document.querySelector is not allowed

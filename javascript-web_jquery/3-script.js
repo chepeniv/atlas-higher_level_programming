@@ -1,4 +1,5 @@
 #!/usr/bin/node
+/* global $ */
 
 // add the class red to <header> content to #ff0000 when
 // div#red_header is clicked
