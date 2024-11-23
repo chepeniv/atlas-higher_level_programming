@@ -9,12 +9,3 @@ $('div#toggle_header').click(() => {
   header.toggleClass('red');
   header.toggleClass('green');
 });
-//   const header = $('header');
-//   if (header.hasClass('red')) {
-//     header.removeClass('red');
-//     header.addClass('green');
-//   } else {
-//     header.removeClass('green');
-//     header.addClass('red');
-//   }
-
