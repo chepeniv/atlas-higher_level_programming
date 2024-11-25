@@ -7,7 +7,6 @@
 // script must work when imported from head
 const url = 'https://hellosalut.stefanbohacek.dev/?lang=fr';
 $.get(url, (data, stat) => {
-  console.log(data);
   $('div#hello').text(data.hello);
   $('div#hello').attr('translation', data.code);
 });
